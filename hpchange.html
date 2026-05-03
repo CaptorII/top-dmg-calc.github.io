@@ -1,0 +1,104 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Damage Calculator</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <h1>Damage Calculator</h1>
+
+  <div id="hpDiv">
+    <p>
+      <label id="hpLabel" class="hpInfo">HP: </label>
+      <label id="hp" class="hpInfo">10</label>
+      <label id="maxHpLabel" class="hpInfo"> / </label>
+      <label id="maxHp" class="hpInfo">10</label>
+    </p>
+    <p>
+      <label id="epLabel" class="hpInfo">EP: </label>
+      <label id="ep" class="hpInfo">10</label>
+      <label id="maxEpLabel" class="hpInfo"> / </label>
+      <label id="maxEp" class="hpInfo">10</label>
+    </p>
+    <p>
+      <label for="block" id="blockLabel">Block:</label>
+      <input type="number" id="block" class="displayInput" />
+      <label for="ward" id="wardLabel">Ward:</label>
+      <input type="number" id="ward" class="displayInput" />
+    </p>
+    <p>
+      <div class="resistances">
+        <label for="resImpact" id="resImpactLabel">Impact Resistance:</label>
+        <input type="number" id="resImpact" class="displayInput" readonly />
+        <label for="resFire" id="resFireLabel">Fire Resistance:</label>
+        <input type="number" id="resFire" class="displayInput" readonly />
+        <label for="resFrost" id="resFrostLabel">Frost Resistance:</label>
+        <input type="number" id="resFrost" class="displayInput" readonly />
+        <label for="resStorm" id="resStormLabel">Storm Resistance:</label>
+        <input type="number" id="resStorm" class="displayInput" readonly />
+        <label for="resAcid" id="resAcidLabel">Acid Resistance:</label>
+        <input type="number" id="resAcid" class="displayInput" readonly />
+        <label for="resPoison" id="resPoisonLabel">Poison Resistance:</label>
+        <input type="number" id="resPoison" class="displayInput" readonly />
+      </div>
+    </p>
+    <p class="resistances">
+      <label for="resFlux" id="resFluxLabel">Flux Resistance:</label>
+      <input type="number" id="resFlux" class="displayInput" readonly />
+      <label for="resChaos" id="resChaosLabel">Chaos Resistance:</label>
+      <input type="number" id="resChaos" class="displayInput" readonly />
+      <label for="resHoly" id="resHolyLabel">Holy Resistance:</label>
+      <input type="number" id="resHoly" class="displayInput" readonly />
+      <label for="resUnholy" id="resUnholyLabel">Unholy Resistance:</label>
+      <input type="number" id="resUnholy" class="displayInput" readonly />
+    </p>
+    <p>
+      <label for="hpChange">Damage:</label>
+      <input type="number" id="hpChange" min="0" max="100" value="0" />
+    </p>
+    <form id="damageTypeForm">
+      <input type="radio" id="damImpact" name="damType" value="impact" checked />
+      <label for="damImpact">Impact</label>
+      <input type="radio" id="damFire" name="damType" value="fire" />
+      <label for="damFire">Fire</label>
+      <input type="radio" id="damFrost" name="damType" value="frost" />
+      <label for="damFrost">Frost</label>
+      <input type="radio" id="damStorm" name="damType" value="storm" />
+      <label for="damStorm">Storm</label>
+      <input type="radio" id="damAcid" name="damType" value="acid" />
+      <label for="damAcid">Acid</label>
+      <input type="radio" id="damPoison" name="damType" value="poison" />
+      <label for="damPoison">Poison</label>
+    </form>
+    <form id="mentalDamageTypeForm">
+      <input type="radio" id="damFlux" name="menDamType" value="flux" checked />
+      <label for="damFlux">Flux</label>
+      <input type="radio" id="damChaos" name="menDamType" value="chaos" />
+      <label for="damChaos">Chaos</label>
+      <input type="radio" id="damHoly" name="menDamType" value="holy" />
+      <label for="damHoly">Holy</label>
+      <input type="radio" id="damUnholy" name="menDamType" value="unholy" />
+      <label for="damUnholy">Unholy</label>
+    </form>
+    <p>
+      <button id="blockDamage" onclick="blockDamage()">Physical Damage</button>
+      <button id="wardDamage" onclick="wardDamage()">Mental Damage</button>
+    </p>
+    <p>
+      <button id="heal" onclick="heal()">Heal to full</button>
+    </p>
+    <p>
+      <button id="return" onclick="changeStats()">Return to previous page</button>
+    </p>
+  </div>
+
+  <script src="js/changeHp.js"></script>
+
+</body>
+
+</html>
