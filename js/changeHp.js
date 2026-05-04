@@ -71,8 +71,8 @@ loadStats();
 function blockDamage() {
   // for hpChange that is more than double block, reduce hp by hpChange minus block
   // for hpChange that is less than double block, reduce hp by half of hpChange rounded down
-  hpChange = document.getElementById("hpChange").value;
-  damageType = document.querySelector('input[name="damType"]:checked').value;
+  hpChange = Number(document.getElementById("hpChange").value);
+  damageType = Number(document.querySelector('input[name="damType"]:checked').value);
   if (hpChange > (block * 2)) {
     hpChange -= block;
   } else {
@@ -99,8 +99,8 @@ function blockDamage() {
 }
 
 function wardDamage() {
-  epChange = document.getElementById("hpChange").value;
-  damageType = document.querySelector('input[name="menDamType"]:checked').value;
+  epChange = Number(document.getElementById("hpChange").value);
+  damageType = Number(document.querySelector('input[name="menDamType"]:checked').value);
   if (epChange > (ward * 2)) {
     epChange = epChange - ward;
   } else {
@@ -120,6 +120,30 @@ function wardDamage() {
   }
   if (epChange > 0) { ep -= epChange; }
   document.getElementById("ep").innerText = ep;
+}
+
+function healHp() {
+  hpChange = Number(document.getElementById("healAmount").value);
+  if (hpChange > 0) {
+    if ((hp + hpChange) < maxHp) {
+      hp += hpChange;
+    } else {
+      hp = maxHp;
+    }
+    document.getElementById("hp").innerText = hp;
+  }
+}
+
+function healEp() {
+  epChange = Number(document.getElementById("healAmount").value);
+  if (epChange > 0) {
+    if ((ep + epChange) < maxEp) {
+      ep += epChange;
+    } else {
+      ep = maxEp;
+    }
+    document.getElementById("ep").innerText = ep;
+  }
 }
 
 function heal() {

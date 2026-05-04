@@ -59,7 +59,7 @@
     </p>
     <p>
       <label for="hpChange">Damage:</label>
-      <input type="number" id="hpChange" min="0" max="100" value="0" />
+      <input type="number" id="hpChange" min="0" max="1000" value="0" />
     </p>
     <form id="damageTypeForm">
       <input type="radio" id="damImpact" name="damType" value="impact" checked />
@@ -90,6 +90,12 @@
       <button id="wardDamage" onclick="wardDamage()">Mental Damage</button>
     </p>
     <p>
+      <label for="healAmount" id="healLabel">Heal:</label>
+      <input type="number" id="healAmount" min="0" max="1000" value="0" />
+    </p>
+    <p>
+      <button id="healHp" onclick="healHp()">Heal HP</button>
+      <button id="healEp" onclick="healEp()">Heal EP</button>
       <button id="heal" onclick="heal()">Heal to full</button>
     </p>
     <p>

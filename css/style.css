@@ -90,16 +90,18 @@ textarea {
 }
 
 .displayInput {
-  width: 30px;
+  width: 5ch;
 }
 
 .resistances {
-  width: 170px;
+  display: inline-grid;
+  grid-template-columns: max-content auto;
+  grid-gap: 0.5rem;
+  align-items: center;
 }
 
-.resistances input {
-  display: inline-block;
-  float: right;
+#hpTable input {
+  width: 7ch;
 }
 
 /* ==========================================================================

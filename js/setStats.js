@@ -16,10 +16,10 @@ let resHoly = 0;
 let resUnholy = 0;
 
 function updateMax() {
-  hp = document.getElementById("hp").value;
-  maxHp = document.getElementById("maxHp").value;
-  ep = document.getElementById("ep").value;
-  maxEp = document.getElementById("maxEp").value;
+  hp = Number(document.getElementById("hp").value);
+  maxHp = Number(document.getElementById("maxHp").value);
+  ep = Number(document.getElementById("ep").value);
+  maxEp = Number(document.getElementById("maxEp").value);
 
   if (hp > maxHp) {
     document.getElementById("maxHp").value = hp;
