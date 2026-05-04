@@ -14,45 +14,61 @@
 
   <div class="hpDiv">
     <p>
-      <label for="hp" id="hpLabel" class="hpInfo">HP: </label>
-      <input type="number" id="hp" min="0" max="1000" value="10" class="hpInfo" />
-      <label for="maxHp" id="maxHpLabel" class="hpInfo"> / </label>
+      <label id="hpLabel" class="hpInfo">HP: </label>
+      <label id="hp" class="hpInfo">10</label>
+      <label id="maxHpLabel" class="hpInfo"> / </label>
       <label id="maxHp" class="hpInfo">10</label>
     </p>
     <p>
-      <label for="tempHp" id="tempHpLabel" class="hpInfo">Temp HP: </label>
-      <input type="number" id="tempHp" min="0" max="1000" value="0" class="hpInfo" />
+      <label id="tempHpLabel" class="hpInfo">Temp HP: </label>
+      <label id="tempHp" class="hpInfo">0</label>
     </p>
   </div>
   <div class="hpDiv">
     <p>
-      <label for="ep" id="epLabel" class="hpInfo">EP: </label>
-      <input type="number" id="ep" min="0" max="1000" value="10" class="hpInfo" />
+      <label id="epLabel" class="hpInfo">EP: </label>
+      <label id="ep" class="hpInfo">10</label>
       <label id="maxEpLabel" class="hpInfo"> / </label>
       <label id="maxEp" class="hpInfo">10</label>
     </p>
     <p>
-      <label for="tempEp" id="tempEpLabel" class="hpInfo">Temp EP: </label>
-      <input type="number" id="tempEp" min="0" max="1000" value="0" class="hpInfo" />
-    </p>
-  </div>
-  <div class="hpDiv">
-    <p>
-      <label for="mana" id="manaLabel" class="hpInfo">Mana: </label>
-      <input type="number" id="mana" min="0" max="1000" value="0" class="hpInfo" />
-      <label id="maxManaLabel" class="hpInfo"> / </label>
-      <label id="maxMana" class="hpInfo">0</label>
-    </p>
-    <p>
-      <label for="stamina" id="staminaLabel" class="hpInfo">Stamina: </label>
-      <input type="number" id="stamina" min="0" max="1000" value="0" class="hpInfo" />
-      <label id="maxStaminaLabel" class="hpInfo"> / </label>
-      <label id="maxStamina" class="hpInfo">0</label>
+      <label id="tempEpLabel" class="hpInfo">Temp EP: </label>
+      <label id="tempEp" class="hpInfo">0</label>
     </p>
   </div>
   <p>
+    <label for="block" id="blockLabel">Block:</label>
+    <input type="number" id="block" class="displayInput" />
+    <label for="ward" id="wardLabel">Ward:</label>
+    <input type="number" id="ward" class="displayInput" />
+  </p>
+  <p>
     <label for="indomitable" id="indomitableLabel">Indomitable: </label>
     <input type="number" id="indomitable" class="displayInput" min="0" max="1000" value="0" onchange="updateIndomitable()" />
+  </p>
+  <p>
+    <div class="resistances">
+      <label for="resImpact" id="resImpactLabel">Impact Resistance:</label>
+      <input type="number" id="resImpact" class="displayInput" readonly />
+      <label for="resFire" id="resFireLabel">Fire Resistance:</label>
+      <input type="number" id="resFire" class="displayInput" readonly />
+      <label for="resFrost" id="resFrostLabel">Frost Resistance:</label>
+      <input type="number" id="resFrost" class="displayInput" readonly />
+      <label for="resStorm" id="resStormLabel">Storm Resistance:</label>
+      <input type="number" id="resStorm" class="displayInput" readonly />
+      <label for="resAcid" id="resAcidLabel">Acid Resistance:</label>
+      <input type="number" id="resAcid" class="displayInput" readonly />
+      <label for="resPoison" id="resPoisonLabel">Poison Resistance:</label>
+      <input type="number" id="resPoison" class="displayInput" readonly />
+      <label for="resFlux" id="resFluxLabel">Flux Resistance:</label>
+      <input type="number" id="resFlux" class="displayInput" readonly />
+      <label for="resChaos" id="resChaosLabel">Chaos Resistance:</label>
+      <input type="number" id="resChaos" class="displayInput" readonly />
+      <label for="resHoly" id="resHolyLabel">Holy Resistance:</label>
+      <input type="number" id="resHoly" class="displayInput" readonly />
+      <label for="resUnholy" id="resUnholyLabel">Unholy Resistance:</label>
+      <input type="number" id="resUnholy" class="displayInput" readonly />
+    </div>
   </p>
   <p>
     <label for="hpChange">Damage:</label>

@@ -20,6 +20,10 @@ let resFlux = 0;
 let resChaos = 0;
 let resHoly = 0;
 let resUnholy = 0;
+let mana = 0;
+let maxMana = 0;
+let stamina = 0;
+let maxStamina = 0;
 
 function loadStats() {
   // Get saved data
@@ -42,13 +46,20 @@ function loadStats() {
   resChaos = Number(localStorage.getItem("resChaos"));
   resHoly = Number(localStorage.getItem("resHoly"));
   resUnholy = Number(localStorage.getItem("resUnholy"));
-  document.getElementById("hp").innerText = hp;
+  mana = Number(localStorage.getItem("mana"));
+  maxMana = Number(localStorage.getItem("maxMana"));
+  stamina = Number(localStorage.getItem("stamina"));
+  maxStamina = Number(localStorage.getItem("maxStamina"));
+  document.getElementById("hp").value = hp;
+  document.getElementById("hp").max = maxHp;
   document.getElementById("maxHp").innerText = maxHp;
-  document.getElementById("tempHp").innerText = tempHp;
-  document.getElementById("ep").innerText = ep;
+  document.getElementById("tempHp").value = tempHp;
+  document.getElementById("ep").value = ep;
+  document.getElementById("ep").max = maxEp;
   document.getElementById("maxEp").innerText = maxEp;
-  document.getElementById("tempEp").innerText = tempEp;
-  document.getElementById("block").value = block;
+  document.getElementById("tempEp").value = tempEp;
+  // enable if using hpchange-test
+  /*document.getElementById("block").value = block;
   document.getElementById("block").disabled = true;
   document.getElementById("ward").value = ward;
   document.getElementById("ward").disabled = true;
@@ -72,7 +83,13 @@ function loadStats() {
   document.getElementById("resHoly").value = resHoly;
   document.getElementById("resHoly").disabled = true;
   document.getElementById("resUnholy").value = resUnholy;
-  document.getElementById("resUnholy").disabled = true;
+  document.getElementById("resUnholy").disabled = true;*/
+  document.getElementById("mana").value = mana;
+  document.getElementById("mana").max = maxMana;
+  document.getElementById("maxMana").innerText = maxMana;
+  document.getElementById("stamina").value = stamina;
+  document.getElementById("stamina").max = maxStamina;
+  document.getElementById("maxStamina").innerText = maxStamina;
 }
 
 loadStats();
@@ -91,6 +108,8 @@ function blockDamage() {
   // for hpChange that is more than double block, reduce hp by hpChange minus block
   // for hpChange that is less than double block, reduce hp by half of hpChange rounded down
   // damage is reduced by block, then by resistance, then reduces indomitable, then reduces tempHp, before reducing hp
+  hp = Number(document.getElementById("hp").value);
+  tempHp = Number(document.getElementById("tempHp").value);
   hpChange = Number(document.getElementById("hpChange").value);
   damageType = document.querySelector('input[name="damType"]:checked').value;
   indomitable = Number(document.getElementById("indomitable").value);
@@ -123,18 +142,20 @@ function blockDamage() {
     }
     if (hpChange < tempHp) {
       tempHp -= hpChange;
-      document.getElementById("tempHp").innerText = tempHp;
+      document.getElementById("tempHp").value = tempHp;
       return;
     }
     hpChange -= tempHp;
     tempHp = 0;
-    document.getElementById("tempHp").innerText = tempHp;
+    document.getElementById("tempHp").value = tempHp;
     hp -= hpChange;
   }
-  document.getElementById("hp").innerText = hp;
+  document.getElementById("hp").value = hp;
 }
 
 function wardDamage() {
+  ep = Number(document.getElementById("ep").value);
+  tempEp = Number(document.getElementById("tempEp").value);
   epChange = Number(document.getElementById("hpChange").value);
   damageType = document.querySelector('input[name="damType"]:checked').value;
   indomitable = Number(document.getElementById("indomitable").value);
@@ -163,15 +184,15 @@ function wardDamage() {
     }
     if (epChange < tempEp) {
       tempEp -= epChange;
-      document.getElementById("tempEp").innerText = tempEp;
+      document.getElementById("tempEp").value = tempEp;
       return;
     }
     epChange -= tempEp;
     tempEp = 0;
-    document.getElementById("tempEp").innerText = tempEp;
+    document.getElementById("tempEp").value = tempEp;
     ep -= epChange;
   }
-  document.getElementById("ep").innerText = ep;
+  document.getElementById("ep").value = ep;
 }
 
 function healHp() {
@@ -182,7 +203,7 @@ function healHp() {
     } else {
       hp = maxHp;
     }
-    document.getElementById("hp").innerText = hp;
+    document.getElementById("hp").value = hp;
   }
 }
 
@@ -194,15 +215,15 @@ function healEp() {
     } else {
       ep = maxEp;
     }
-    document.getElementById("ep").innerText = ep;
+    document.getElementById("ep").value = ep;
   }
 }
 
 function heal() {
   hp = maxHp;
-  document.getElementById("hp").innerText = hp;
+  document.getElementById("hp").value = hp;
   ep = maxEp;
-  document.getElementById("ep").innerText = ep;
+  document.getElementById("ep").value = ep;
 }
 
 function updateIndomitable() {
@@ -229,6 +250,10 @@ function changeStats() {
   localStorage.setItem("resChaos", resChaos);
   localStorage.setItem("resHoly", resHoly);
   localStorage.setItem("resUnholy", resUnholy);
+  localStorage.setItem("mana", mana);
+  localStorage.setItem("maxMana", maxMana);
+  localStorage.setItem("stamina", stamina);
+  localStorage.setItem("maxStamina", maxStamina);
 
   window.location.href="index.html";
 }
