@@ -12,61 +12,67 @@
 
   <h1>Damage Calculator</h1>
 
-  <div id="hpDiv">
-      <p>
-        <label for="hp" id="hpLabel" class="hpInfo">HP: </label>
-        <input type="number" id="hp" min="0" max="1000" value="10" class="hpInfo" onchange="updateMax()" />
-        <label for="maxHp" id="maxHpLabel" class="hpInfo"> / </label>
-        <input type="number" id="maxHp" min="0" max="1000" value="10" class="hpInfo" />
-      </p>
-      <p>
-        <label for="ep" id="epLabel" class="hpInfo">EP: </label>
-        <input type="number" id="ep" min="0" max="1000" value="10" class="hpInfo" onchange="updateMax()" />
-        <label for="maxEp" id="maxEpLabel" class="hpInfo"> / </label>
-        <input type="number" id="maxEp" min="0" max="1000" value="10" class="hpInfo" />
-      </p>
-    <table id="hpTable">
-      <tr>
-        <td><label for="blockRange">Block:</label></td>
-        <td><input type="number" id="blockRange" min="0" max="100" value="0" /></td>
-        <td><label for="wardRange">Ward:</label></td>
-        <td><input type="number" id="wardRange" min="0" max="100" value="0" /></td>
-      </tr>
-      <tr>
-        <td><label for="resImpact">Impact Resistance:</label></td>
-        <td><input type="number" id="resImpact" min="-100" max="100" value="0" /></td>
-        <td><label for="resFlux">Flux Resistance:</label></td>
-        <td><input type="number" id="resFlux" min="-100" max="100" value="0" /></td>
-      </tr>
-      <tr>
-        <td><label for="resFire">Fire Resistance:</label></td>
-        <td><input type="number" id="resFire" min="-100" max="100" value="0" /></td>
-        <td><label for="resChaos">Chaos Resistance:</label></td>
-        <td><input type="number" id="resChaos" min="-100" max="100" value="0" /></td>
-      </tr>
-      <tr>
-        <td><label for="resFrost">Frost Resistance:</label></td>
-        <td><input type="number" id="resFrost" min="-100" max="100" value="0" /></td>
-        <td><label for="resHoly">Holy Resistance:</label></td>
-        <td><input type="number" id="resHoly" min="-100" max="100" value="0" /></td>
-      </tr>
-      <tr>
-        <td><label for="resStorm">Storm Resistance:</label></td>
-        <td><input type="number" id="resStorm" min="-100" max="100" value="0" /></td>
-        <td><label for="resUnholy">Unholy Resistance:</label></td>
-        <td><input type="number" id="resUnholy" min="-100" max="100" value="0" /></td>
-      </tr>
-      <tr>
-        <td><label for="resAcid">Acid Resistance:</label></td>
-        <td><input type="number" id="resAcid" min="-100" max="100" value="0" /></td>
-      </tr>
-      <tr>
-        <td><label for="resPoison">Poison Resistance:</label></td>
-        <td><input type="number" id="resPoison" min="-100" max="100" value="0" /></td>
-      </tr>
-    </table>
-    <p><button type="submit" onclick="submitStats()">Save</button></p>
-  </div>
+  <p>
+    <label for="hp" id="hpLabel" class="hpInfo">HP: </label>
+    <input type="number" id="hp" min="0" max="1000" value="10" class="hpInfo" onchange="updateMax()" />
+    <label for="maxHp" id="maxHpLabel" class="hpInfo"> / </label>
+    <input type="number" id="maxHp" min="0" max="1000" value="10" class="hpInfo" />
+  </p>
+  <p>
+    <label for="tempHp" id="tempHpLabel" class="hpInfo">Temp HP: </label>
+    <input type="number" id="tempHp" min="0" max="1000" value="0" class="hpInfo" />
+  </p>
+  <p>
+    <label for="ep" id="epLabel" class="hpInfo">EP: </label>
+    <input type="number" id="ep" min="0" max="1000" value="10" class="hpInfo" onchange="updateMax()" />
+    <label for="maxEp" id="maxEpLabel" class="hpInfo"> / </label>
+    <input type="number" id="maxEp" min="0" max="1000" value="10" class="hpInfo" />
+  </p>
+  <p>
+    <label for="tempEp" id="tempEpLabel" class="hpInfo">Temp EP: </label>
+    <input type="number" id="tempEp" min="0" max="1000" value="0" class="hpInfo" />
+  </p>
+  <table id="hpTable">
+    <tr>
+      <td><label for="blockRange">Block:</label></td>
+      <td><input type="number" id="blockRange" min="0" max="100" value="0" /></td>
+      <td><label for="wardRange">Ward:</label></td>
+      <td><input type="number" id="wardRange" min="0" max="100" value="0" /></td>
+    </tr>
+    <tr>
+      <td><label for="resImpact">Impact Resistance:</label></td>
+      <td><input type="number" id="resImpact" min="-100" max="100" value="0" /></td>
+      <td><label for="resFlux">Flux Resistance:</label></td>
+      <td><input type="number" id="resFlux" min="-100" max="100" value="0" /></td>
+    </tr>
+    <tr>
+      <td><label for="resFire">Fire Resistance:</label></td>
+      <td><input type="number" id="resFire" min="-100" max="100" value="0" /></td>
+      <td><label for="resChaos">Chaos Resistance:</label></td>
+      <td><input type="number" id="resChaos" min="-100" max="100" value="0" /></td>
+    </tr>
+    <tr>
+      <td><label for="resFrost">Frost Resistance:</label></td>
+      <td><input type="number" id="resFrost" min="-100" max="100" value="0" /></td>
+      <td><label for="resHoly">Holy Resistance:</label></td>
+      <td><input type="number" id="resHoly" min="-100" max="100" value="0" /></td>
+    </tr>
+    <tr>
+      <td><label for="resStorm">Storm Resistance:</label></td>
+      <td><input type="number" id="resStorm" min="-100" max="100" value="0" /></td>
+      <td><label for="resUnholy">Unholy Resistance:</label></td>
+      <td><input type="number" id="resUnholy" min="-100" max="100" value="0" /></td>
+    </tr>
+    <tr>
+      <td><label for="resAcid">Acid Resistance:</label></td>
+      <td><input type="number" id="resAcid" min="-100" max="100" value="0" /></td>
+    </tr>
+    <tr>
+      <td><label for="resPoison">Poison Resistance:</label></td>
+      <td><input type="number" id="resPoison" min="-100" max="100" value="0" /></td>
+    </tr>
+  </table>
+  <p><button type="submit" onclick="submitStats()">Save</button></p>
 
   <script src="js/setStats.js"></script>
 

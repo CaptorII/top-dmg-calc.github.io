@@ -1,11 +1,14 @@
 let hp = 10;
 let hpChange = 0;
 let maxHp = 10;
+let tempHp = 0;
 let ep = 10;
 let epChange = 0;
 let maxEp = 10;
+let tempEp = 0;
 let block = 0;
 let ward = 0;
+let indomitable = 0;
 let damageType = "impact";
 let resImpact = 0;
 let resFire = 0;
@@ -22,10 +25,13 @@ function loadStats() {
   // Get saved data
   hp = Number(localStorage.getItem("hp"));
   maxHp = Number(localStorage.getItem("maxHp"));
+  tempHp = Number(localStorage.getItem("tempHp"));
   ep = Number(localStorage.getItem("ep"));
   maxEp = Number(localStorage.getItem("maxEp"));
+  tempEp = Number(localStorage.getItem("tempEp"));
   block = Number(localStorage.getItem("block"));
   ward = Number(localStorage.getItem("ward"));
+  indomitable = Number(localStorage.getItem("indomitable"));
   resImpact = Number(localStorage.getItem("resImpact"));
   resFire = Number(localStorage.getItem("resFire"));
   resFrost = Number(localStorage.getItem("resFrost"));
@@ -38,12 +44,15 @@ function loadStats() {
   resUnholy = Number(localStorage.getItem("resUnholy"));
   document.getElementById("hp").innerText = hp;
   document.getElementById("maxHp").innerText = maxHp;
+  document.getElementById("tempHp").innerText = tempHp;
   document.getElementById("ep").innerText = ep;
   document.getElementById("maxEp").innerText = maxEp;
+  document.getElementById("tempEp").innerText = tempEp;
   document.getElementById("block").value = block;
   document.getElementById("block").disabled = true;
   document.getElementById("ward").value = ward;
   document.getElementById("ward").disabled = true;
+  document.getElementById("indomitable").value = indomitable;
   document.getElementById("resImpact").value = resImpact;
   document.getElementById("resImpact").disabled = true;
   document.getElementById("resFire").value = resFire;
@@ -68,11 +77,23 @@ function loadStats() {
 
 loadStats();
 
+function damage() {
+  damageType = document.querySelector('input[name="damType"]:checked').value;
+  if (damageType === "impact" || damageType === "fire" || damageType === "frost" || damageType === "storm" ||
+      damageType === "acid" || damageType === "poison") {
+    blockDamage();
+  } else {
+    wardDamage();
+  }
+}
+
 function blockDamage() {
   // for hpChange that is more than double block, reduce hp by hpChange minus block
   // for hpChange that is less than double block, reduce hp by half of hpChange rounded down
+  // damage is reduced by block, then by resistance, then reduces indomitable, then reduces tempHp, before reducing hp
   hpChange = Number(document.getElementById("hpChange").value);
-  damageType = Number(document.querySelector('input[name="damType"]:checked').value);
+  damageType = document.querySelector('input[name="damType"]:checked').value;
+  indomitable = Number(document.getElementById("indomitable").value);
   if (hpChange > (block * 2)) {
     hpChange -= block;
   } else {
@@ -94,13 +115,29 @@ function blockDamage() {
   } else if (damageType === "poison") {
     hpChange -= resPoison;
   }
-  if (hpChange > 0) { hp -= hpChange; }
+  if (hpChange > 0) {
+    if (hpChange <= indomitable) {
+      indomitable -= hpChange;
+      document.getElementById("indomitable").value = indomitable;
+      return;
+    }
+    if (hpChange < tempHp) {
+      tempHp -= hpChange;
+      document.getElementById("tempHp").innerText = tempHp;
+      return;
+    }
+    hpChange -= tempHp;
+    tempHp = 0;
+    document.getElementById("tempHp").innerText = tempHp;
+    hp -= hpChange;
+  }
   document.getElementById("hp").innerText = hp;
 }
 
 function wardDamage() {
   epChange = Number(document.getElementById("hpChange").value);
-  damageType = Number(document.querySelector('input[name="menDamType"]:checked').value);
+  damageType = document.querySelector('input[name="damType"]:checked').value;
+  indomitable = Number(document.getElementById("indomitable").value);
   if (epChange > (ward * 2)) {
     epChange = epChange - ward;
   } else {
@@ -118,7 +155,22 @@ function wardDamage() {
   } else if (damageType === "unholy") {
     epChange -= resUnholy;
   }
-  if (epChange > 0) { ep -= epChange; }
+  if (epChange > 0) {
+    if (epChange <= indomitable) {
+      indomitable -= epChange;
+      document.getElementById("indomitable").value = indomitable;
+      return;
+    }
+    if (epChange < tempEp) {
+      tempEp -= epChange;
+      document.getElementById("tempEp").innerText = tempEp;
+      return;
+    }
+    epChange -= tempEp;
+    tempEp = 0;
+    document.getElementById("tempEp").innerText = tempEp;
+    ep -= epChange;
+  }
   document.getElementById("ep").innerText = ep;
 }
 
@@ -153,13 +205,20 @@ function heal() {
   document.getElementById("ep").innerText = ep;
 }
 
+function updateIndomitable() {
+  indomitable = Number(document.getElementById("indomitable").value);
+}
+
 function changeStats() {
   localStorage.setItem("hp", hp);
   localStorage.setItem("maxHp", maxHp);
+  localStorage.setItem("tempHp", tempHp);
   localStorage.setItem("ep", ep);
   localStorage.setItem("maxEp", maxEp);
+  localStorage.setItem("tempEp", tempEp);
   localStorage.setItem("block", block);
   localStorage.setItem("ward", ward);
+  localStorage.setItem("indomitable", indomitable);
   localStorage.setItem("resImpact", resImpact);
   localStorage.setItem("resFire", resFire);
   localStorage.setItem("resFrost", resFrost);
