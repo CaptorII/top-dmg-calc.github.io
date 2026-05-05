@@ -84,13 +84,32 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-.hpInfo {
+.hpDiv .hpInfo {
   font-weight: bold;
   font-size: 150%;
 }
 
-.displayInput {
+.tempHpDiv .hpInfo {
+  font-weight: bold;
+  font-size: 110%;
+}
+
+#hpTable input {
+  width: 7ch;
+}
+
+.hpDiv input {
   width: 5ch;
+}
+
+#popout {
+  width: 4ch;
+  height: 12ch;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 100;
+  anchor-name: --popout;
 }
 
 .resistances {
@@ -100,11 +119,19 @@ textarea {
   align-items: center;
 }
 
-#hpTable input {
-  width: 7ch;
+#resDiv {
+  position-anchor: --popout;
+  position: absolute;
+  position-area: left;
+  z-index: 99;
+  background-color: white;
 }
 
-.hpDiv input {
+.resistances input {
+  width: 5ch;
+}
+
+#indomitable {
   width: 5ch;
 }
 

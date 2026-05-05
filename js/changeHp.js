@@ -58,8 +58,7 @@ function loadStats() {
   document.getElementById("ep").max = maxEp;
   document.getElementById("maxEp").innerText = maxEp;
   document.getElementById("tempEp").value = tempEp;
-  // enable if using hpchange-test
-  /*document.getElementById("block").value = block;
+  document.getElementById("block").value = block;
   document.getElementById("block").disabled = true;
   document.getElementById("ward").value = ward;
   document.getElementById("ward").disabled = true;
@@ -83,7 +82,7 @@ function loadStats() {
   document.getElementById("resHoly").value = resHoly;
   document.getElementById("resHoly").disabled = true;
   document.getElementById("resUnholy").value = resUnholy;
-  document.getElementById("resUnholy").disabled = true;*/
+  document.getElementById("resUnholy").disabled = true;
   document.getElementById("mana").value = mana;
   document.getElementById("mana").max = maxMana;
   document.getElementById("maxMana").innerText = maxMana;
@@ -228,6 +227,18 @@ function heal() {
 
 function updateIndomitable() {
   indomitable = Number(document.getElementById("indomitable").value);
+}
+
+function popout() {
+  if (document.getElementById("popout").innerText === "<") {
+    document.getElementById("popout").innerText = ">";
+  } else {
+    document.getElementById("popout").innerText = "<";
+  }
+  let popupElements = document.getElementsByClassName("resistances");
+  for (let i = 0; i < popupElements.length; i++) {
+    popupElements[i].hidden = !popupElements[i].hidden;
+  }
 }
 
 function changeStats() {

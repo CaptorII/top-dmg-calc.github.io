@@ -12,22 +12,29 @@
 
   <h1>Damage Calculator</h1>
 
+  <div class="hpDiv">
   <p>
     <label for="hp" id="hpLabel" class="hpInfo">HP: </label>
     <input type="number" id="hp" min="0" max="1000" value="10" class="hpInfo" onchange="updateMax()" />
     <label for="maxHp" id="maxHpLabel" class="hpInfo"> / </label>
     <input type="number" id="maxHp" min="0" max="1000" value="10" class="hpInfo" />
   </p>
+  </div>
+  <div class="tempHpDiv">
   <p>
     <label for="tempHp" id="tempHpLabel" class="hpInfo">Temp HP: </label>
     <input type="number" id="tempHp" min="0" max="1000" value="0" class="hpInfo" />
   </p>
+  </div>
+  <div class="hpDiv">
   <p>
     <label for="ep" id="epLabel" class="hpInfo">EP: </label>
     <input type="number" id="ep" min="0" max="1000" value="10" class="hpInfo" onchange="updateMax()" />
     <label for="maxEp" id="maxEpLabel" class="hpInfo"> / </label>
     <input type="number" id="maxEp" min="0" max="1000" value="10" class="hpInfo" />
   </p>
+  </div>
+  <div class="tempHpDiv">
   <p>
     <label for="tempEp" id="tempEpLabel" class="hpInfo">Temp EP: </label>
     <input type="number" id="tempEp" min="0" max="1000" value="0" class="hpInfo" />
@@ -44,6 +51,7 @@
     <label for="maxStamina" id="maxStaminaLabel" class="hpInfo"> / </label>
     <input type="number" id="maxStamina" min="0" max="1000" value="0" class="hpInfo" />
   </p>
+  </div>
   <table id="hpTable">
     <tr>
       <td><label for="blockRange">Block:</label></td>
