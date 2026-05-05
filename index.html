@@ -10,7 +10,8 @@
 
 <body>
 
-  <h1>Damage Calculator</h1>
+  <h1>Troubleshooters of Panvaldi</h1>
+  <h2>Damage Calculator</h2>
 
   <div class="hpDiv">
   <p>
@@ -18,38 +19,36 @@
     <input type="number" id="hp" min="0" max="1000" value="10" class="hpInfo" onchange="updateMax()" />
     <label for="maxHp" id="maxHpLabel" class="hpInfo"> / </label>
     <input type="number" id="maxHp" min="0" max="1000" value="10" class="hpInfo" />
-  </p>
-  </div>
-  <div class="tempHpDiv">
-  <p>
-    <label for="tempHp" id="tempHpLabel" class="hpInfo">Temp HP: </label>
+    <label for="tempHp" id="tempHpLabel" class="hpInfo">Temp: </label>
     <input type="number" id="tempHp" min="0" max="1000" value="0" class="hpInfo" />
   </p>
   </div>
-  <div class="hpDiv">
   <p>
+  <div class="hpDiv">
     <label for="ep" id="epLabel" class="hpInfo">EP: </label>
     <input type="number" id="ep" min="0" max="1000" value="10" class="hpInfo" onchange="updateMax()" />
     <label for="maxEp" id="maxEpLabel" class="hpInfo"> / </label>
     <input type="number" id="maxEp" min="0" max="1000" value="10" class="hpInfo" />
-  </p>
-  </div>
-  <div class="tempHpDiv">
-  <p>
-    <label for="tempEp" id="tempEpLabel" class="hpInfo">Temp EP: </label>
+    <label for="tempEp" id="tempEpLabel" class="hpInfo">Temp: </label>
     <input type="number" id="tempEp" min="0" max="1000" value="0" class="hpInfo" />
+  </div>
   </p>
+  <div class="hpDiv">
   <p>
     <label for="mana" id="manaLabel" class="hpInfo">Mana: </label>
     <input type="number" id="mana" min="0" max="1000" value="0" class="hpInfo" onchange="updateMax()" />
     <label for="maxMana" id="maxManaLabel" class="hpInfo"> / </label>
     <input type="number" id="maxMana" min="0" max="1000" value="0" class="hpInfo" />
+    <label for="tempMana" id="tempManaLabel" class="hpInfo">Temp: </label>
+    <input type="number" id="tempMana" min="0" max="1000" value="0" class="hpInfo" />
   </p>
   <p>
     <label for="stamina" id="staminaLabel" class="hpInfo">Stamina: </label>
     <input type="number" id="stamina" min="0" max="1000" value="0" class="hpInfo" onchange="updateMax()" />
     <label for="maxStamina" id="maxStaminaLabel" class="hpInfo"> / </label>
     <input type="number" id="maxStamina" min="0" max="1000" value="0" class="hpInfo" />
+    <label for="tempStamina" id="tempStaminaLabel" class="hpInfo">Temp: </label>
+    <input type="number" id="tempStamina" min="0" max="1000" value="0" class="hpInfo" />
   </p>
   </div>
   <table id="hpTable">
