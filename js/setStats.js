@@ -4,6 +4,12 @@ let tempHp = 0;
 let ep = 10;
 let maxEp = 10;
 let tempEp = 0;
+let stamina = 0;
+let maxStamina = 0;
+let tempStamina = 0;
+let mana = 0;
+let maxMana = 0;
+let tempMana = 0;
 let block = 0;
 let ward = 0;
 let indomitable = 0;
@@ -17,10 +23,6 @@ let resFlux = 0;
 let resChaos = 0;
 let resHoly = 0;
 let resUnholy = 0;
-let mana = 0;
-let maxMana = 0;
-let stamina = 0;
-let maxStamina = 0;
 
 function updateMax() {
   hp = Number(document.getElementById("hp").value);
@@ -53,6 +55,12 @@ function submitStats() {
   ep = document.getElementById("ep").value;
   maxEp = document.getElementById("maxEp").value;
   tempEp = document.getElementById("tempEp").value;
+  stamina = document.getElementById("stamina").value;
+  maxStamina = document.getElementById("maxStamina").value;
+  tempStamina = document.getElementById("tempStamina").value;
+  mana = document.getElementById("mana").value;
+  maxMana = document.getElementById("maxMana").value;
+  tempMana = document.getElementById("tempMana").value;
   block = document.getElementById("blockRange").value;
   ward = document.getElementById("wardRange").value;
   resImpact = document.getElementById("resImpact").value;
@@ -65,10 +73,6 @@ function submitStats() {
   resChaos = document.getElementById("resChaos").value;
   resHoly = document.getElementById("resHoly").value;
   resUnholy = document.getElementById("resUnholy").value;
-  mana = document.getElementById("mana").value;
-  maxMana = document.getElementById("maxMana").value;
-  stamina = document.getElementById("stamina").value;
-  maxStamina = document.getElementById("maxStamina").value;
   // Save data
   localStorage.setItem("hp", hp);
   localStorage.setItem("maxHp", maxHp);
@@ -76,6 +80,12 @@ function submitStats() {
   localStorage.setItem("ep", ep);
   localStorage.setItem("maxEp", maxEp);
   localStorage.setItem("tempEp", tempEp);
+  localStorage.setItem("stamina", stamina);
+  localStorage.setItem("maxStamina", maxStamina);
+  localStorage.setItem("tempStamina", tempStamina);
+  localStorage.setItem("mana", mana);
+  localStorage.setItem("maxMana", maxMana);
+  localStorage.setItem("tempMana", tempMana);
   localStorage.setItem("block", block);
   localStorage.setItem("ward", ward);
   localStorage.setItem("indomitable", indomitable);
@@ -89,10 +99,6 @@ function submitStats() {
   localStorage.setItem("resChaos", resChaos);
   localStorage.setItem("resHoly", resHoly);
   localStorage.setItem("resUnholy", resUnholy);
-  localStorage.setItem("mana", mana);
-  localStorage.setItem("maxMana", maxMana);
-  localStorage.setItem("stamina", stamina);
-  localStorage.setItem("maxStamina", maxStamina);
 
   window.location.href="hpchange.html";
 }
@@ -105,6 +111,12 @@ function loadStats() {
   ep = Number(localStorage.getItem("ep"));
   maxEp = Number(localStorage.getItem("maxEp"));
   tempEp = Number(localStorage.getItem("tempEp"));
+  stamina = Number(localStorage.getItem("stamina"));
+  maxStamina = Number(localStorage.getItem("maxStamina"));
+  tempStamina = Number(localStorage.getItem("tempStamina"));
+  mana = Number(localStorage.getItem("mana"));
+  maxMana = Number(localStorage.getItem("maxMana"));
+  tempMana = Number(localStorage.getItem("tempMana"));
   block = Number(localStorage.getItem("block"));
   ward = Number(localStorage.getItem("ward"));
   indomitable = Number(localStorage.getItem("indomitable"));
@@ -118,10 +130,6 @@ function loadStats() {
   resChaos = Number(localStorage.getItem("resChaos"));
   resHoly = Number(localStorage.getItem("resHoly"));
   resUnholy = Number(localStorage.getItem("resUnholy"));
-  mana = Number(localStorage.getItem("mana"));
-  maxMana = Number(localStorage.getItem("maxMana"));
-  stamina = Number(localStorage.getItem("stamina"));
-  maxStamina = Number(localStorage.getItem("maxStamina"));
 
   document.getElementById("hp").value = hp;
   document.getElementById("maxHp").value = maxHp;
@@ -129,6 +137,12 @@ function loadStats() {
   document.getElementById("ep").value = ep;
   document.getElementById("maxEp").value = maxEp;
   document.getElementById("tempEp").value = tempEp;
+  document.getElementById("stamina").value = stamina;
+  document.getElementById("maxStamina").value = maxStamina;
+  document.getElementById("tempStamina").value = tempStamina;
+  document.getElementById("mana").value = mana;
+  document.getElementById("maxMana").value = maxMana;
+  document.getElementById("tempMana").value = tempMana;
   document.getElementById("blockRange").value = block;
   document.getElementById("wardRange").value = ward;
   document.getElementById("resImpact").value = resImpact;
@@ -141,10 +155,6 @@ function loadStats() {
   document.getElementById("resChaos").value = resChaos;
   document.getElementById("resHoly").value = resHoly;
   document.getElementById("resUnholy").value = resUnholy;
-  document.getElementById("mana").value = mana;
-  document.getElementById("maxMana").value = maxMana;
-  document.getElementById("stamina").value = stamina;
-  document.getElementById("maxStamina").value = maxStamina;
 }
 
 loadStats();

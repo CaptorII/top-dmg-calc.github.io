@@ -6,6 +6,12 @@ let ep = 10;
 let epChange = 0;
 let maxEp = 10;
 let tempEp = 0;
+let stamina = 0;
+let maxStamina = 0;
+let tempStamina = 0;
+let mana = 0;
+let maxMana = 0;
+let tempMana = 0;
 let block = 0;
 let ward = 0;
 let indomitable = 0;
@@ -20,10 +26,6 @@ let resFlux = 0;
 let resChaos = 0;
 let resHoly = 0;
 let resUnholy = 0;
-let mana = 0;
-let maxMana = 0;
-let stamina = 0;
-let maxStamina = 0;
 
 function loadStats() {
   // Get saved data
@@ -35,8 +37,10 @@ function loadStats() {
   tempEp = Number(localStorage.getItem("tempEp"));
   stamina = Number(localStorage.getItem("stamina"));
   maxStamina = Number(localStorage.getItem("maxStamina"));
+  tempStamina = Number(localStorage.getItem("tempStamina"));
   mana = Number(localStorage.getItem("mana"));
   maxMana = Number(localStorage.getItem("maxMana"));
+  tempMana = Number(localStorage.getItem("tempMana"));
   block = Number(localStorage.getItem("block"));
   ward = Number(localStorage.getItem("ward"));
   indomitable = Number(localStorage.getItem("indomitable"));
@@ -64,10 +68,12 @@ function loadStats() {
   document.getElementById("stamina").max = maxStamina;
   document.getElementById("maxStamina").value = maxStamina;
   document.getElementById("maxStamina").disabled = true;
+  document.getElementById("tempStamina").value = tempStamina;
   document.getElementById("mana").value = mana;
   document.getElementById("mana").max = maxMana;
   document.getElementById("maxMana").value = maxMana;
   document.getElementById("maxMana").disabled = true;
+  document.getElementById("tempMana").value = tempMana;
   document.getElementById("block").value = block;
   document.getElementById("block").disabled = true;
   document.getElementById("ward").value = ward;
@@ -252,6 +258,12 @@ function changeStats() {
   localStorage.setItem("ep", ep);
   localStorage.setItem("maxEp", maxEp);
   localStorage.setItem("tempEp", tempEp);
+  localStorage.setItem("stamina", stamina);
+  localStorage.setItem("maxStamina", maxStamina);
+  localStorage.setItem("tempStamina", tempStamina);
+  localStorage.setItem("mana", mana);
+  localStorage.setItem("maxMana", maxMana);
+  localStorage.setItem("tempMana", tempMana);
   localStorage.setItem("block", block);
   localStorage.setItem("ward", ward);
   localStorage.setItem("indomitable", indomitable);
@@ -265,10 +277,6 @@ function changeStats() {
   localStorage.setItem("resChaos", resChaos);
   localStorage.setItem("resHoly", resHoly);
   localStorage.setItem("resUnholy", resUnholy);
-  localStorage.setItem("stamina", stamina);
-  localStorage.setItem("maxStamina", maxStamina);
-  localStorage.setItem("mana", mana);
-  localStorage.setItem("maxMana", maxMana);
 
   window.location.href="index.html";
 }
