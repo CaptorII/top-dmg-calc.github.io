@@ -33,6 +33,10 @@ function loadStats() {
   ep = Number(localStorage.getItem("ep"));
   maxEp = Number(localStorage.getItem("maxEp"));
   tempEp = Number(localStorage.getItem("tempEp"));
+  stamina = Number(localStorage.getItem("stamina"));
+  maxStamina = Number(localStorage.getItem("maxStamina"));
+  mana = Number(localStorage.getItem("mana"));
+  maxMana = Number(localStorage.getItem("maxMana"));
   block = Number(localStorage.getItem("block"));
   ward = Number(localStorage.getItem("ward"));
   indomitable = Number(localStorage.getItem("indomitable"));
@@ -46,18 +50,24 @@ function loadStats() {
   resChaos = Number(localStorage.getItem("resChaos"));
   resHoly = Number(localStorage.getItem("resHoly"));
   resUnholy = Number(localStorage.getItem("resUnholy"));
-  mana = Number(localStorage.getItem("mana"));
-  maxMana = Number(localStorage.getItem("maxMana"));
-  stamina = Number(localStorage.getItem("stamina"));
-  maxStamina = Number(localStorage.getItem("maxStamina"));
   document.getElementById("hp").value = hp;
   document.getElementById("hp").max = maxHp;
-  document.getElementById("maxHp").innerText = maxHp;
+  document.getElementById("maxHp").value = maxHp;
+  document.getElementById("maxHp").disabled = true;
   document.getElementById("tempHp").value = tempHp;
   document.getElementById("ep").value = ep;
   document.getElementById("ep").max = maxEp;
-  document.getElementById("maxEp").innerText = maxEp;
+  document.getElementById("maxEp").value = maxEp;
+  document.getElementById("maxEp").disabled = true;
   document.getElementById("tempEp").value = tempEp;
+  document.getElementById("stamina").value = stamina;
+  document.getElementById("stamina").max = maxStamina;
+  document.getElementById("maxStamina").value = maxStamina;
+  document.getElementById("maxStamina").disabled = true;
+  document.getElementById("mana").value = mana;
+  document.getElementById("mana").max = maxMana;
+  document.getElementById("maxMana").value = maxMana;
+  document.getElementById("maxMana").disabled = true;
   document.getElementById("block").value = block;
   document.getElementById("block").disabled = true;
   document.getElementById("ward").value = ward;
@@ -83,12 +93,6 @@ function loadStats() {
   document.getElementById("resHoly").disabled = true;
   document.getElementById("resUnholy").value = resUnholy;
   document.getElementById("resUnholy").disabled = true;
-  document.getElementById("mana").value = mana;
-  document.getElementById("mana").max = maxMana;
-  document.getElementById("maxMana").innerText = maxMana;
-  document.getElementById("stamina").value = stamina;
-  document.getElementById("stamina").max = maxStamina;
-  document.getElementById("maxStamina").innerText = maxStamina;
 }
 
 loadStats();
@@ -261,10 +265,10 @@ function changeStats() {
   localStorage.setItem("resChaos", resChaos);
   localStorage.setItem("resHoly", resHoly);
   localStorage.setItem("resUnholy", resUnholy);
-  localStorage.setItem("mana", mana);
-  localStorage.setItem("maxMana", maxMana);
   localStorage.setItem("stamina", stamina);
   localStorage.setItem("maxStamina", maxStamina);
+  localStorage.setItem("mana", mana);
+  localStorage.setItem("maxMana", maxMana);
 
   window.location.href="index.html";
 }

@@ -86,20 +86,19 @@ textarea {
 
 body {
   background-color: #f8fcfe;
-  font-family: "Noto Serif", "Segoe Print", "Segoe UI", serif;
+  font-family: "Noto Serif", "Georgia", serif;
 }
 
 h1 {
   color: #6021a5;
-  font-family: "Anarchaos", "Noto Serif", "Segoe Print", "Segoe UI", sans-serif;
-  font-size: 300%;
-  margin-top: -0.2em;
-  margin-bottom: -0.4em;
+  font-size: 200%;
 }
 
-h2 {
-  color: #6021a5;
-  font-size: 200%;
+#logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
 }
 
 button {
@@ -112,7 +111,7 @@ input[type="radio"] {
 
 .hpDiv .hpInfo {
   font-weight: bold;
-  font-size: 140%;
+  font-size: 110%;
 }
 
 .tempHpDiv .hpInfo {
@@ -125,11 +124,11 @@ input[type="radio"] {
 }
 
 .hpDiv input {
-  width: 6ch;
+  width: 5ch;
 }
 
 .tempHpDiv input {
-  width: 6ch;
+  width: 5ch;
 }
 
 #popout {

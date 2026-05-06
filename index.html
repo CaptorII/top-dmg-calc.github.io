@@ -10,8 +10,8 @@
 
 <body>
 
-  <h1>Troubleshooters of Panvaldi</h1>
-  <h2>Damage Calculator</h2>
+  <h1>Damage Calculator</h1>
+  <img src="img/logo.png" alt="Logo" id="logo" />
 
   <div class="hpDiv">
   <p>
@@ -34,22 +34,22 @@
   </div>
   </p>
   <div class="hpDiv">
-  <p>
-    <label for="mana" id="manaLabel" class="hpInfo">Mana: </label>
-    <input type="number" id="mana" min="0" max="1000" value="0" class="hpInfo" onchange="updateMax()" />
-    <label for="maxMana" id="maxManaLabel" class="hpInfo"> / </label>
-    <input type="number" id="maxMana" min="0" max="1000" value="0" class="hpInfo" />
-    <label for="tempMana" id="tempManaLabel" class="hpInfo">Temp: </label>
-    <input type="number" id="tempMana" min="0" max="1000" value="0" class="hpInfo" />
-  </p>
-  <p>
-    <label for="stamina" id="staminaLabel" class="hpInfo">Stamina: </label>
-    <input type="number" id="stamina" min="0" max="1000" value="0" class="hpInfo" onchange="updateMax()" />
-    <label for="maxStamina" id="maxStaminaLabel" class="hpInfo"> / </label>
-    <input type="number" id="maxStamina" min="0" max="1000" value="0" class="hpInfo" />
-    <label for="tempStamina" id="tempStaminaLabel" class="hpInfo">Temp: </label>
-    <input type="number" id="tempStamina" min="0" max="1000" value="0" class="hpInfo" />
-  </p>
+    <p>
+      <label for="stamina" id="staminaLabel" class="hpInfo">Stamina: </label>
+      <input type="number" id="stamina" min="0" max="1000" value="0" class="hpInfo" onchange="updateMax()" />
+      <label for="maxStamina" id="maxStaminaLabel" class="hpInfo"> / </label>
+      <input type="number" id="maxStamina" min="0" max="1000" value="0" class="hpInfo" />
+      <label for="tempStamina" id="tempStaminaLabel" class="hpInfo">Temp: </label>
+      <input type="number" id="tempStamina" min="0" max="1000" value="0" class="hpInfo" />
+    </p>
+    <p>
+      <label for="mana" id="manaLabel" class="hpInfo">Mana: </label>
+      <input type="number" id="mana" min="0" max="1000" value="0" class="hpInfo" onchange="updateMax()" />
+      <label for="maxMana" id="maxManaLabel" class="hpInfo"> / </label>
+      <input type="number" id="maxMana" min="0" max="1000" value="0" class="hpInfo" />
+      <label for="tempMana" id="tempManaLabel" class="hpInfo">Temp: </label>
+      <input type="number" id="tempMana" min="0" max="1000" value="0" class="hpInfo" />
+    </p>
   </div>
   <table id="hpTable">
     <tr>
