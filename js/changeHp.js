@@ -28,6 +28,7 @@ let resHoly = 0;
 let resUnholy = 0;
 let outputLog;
 let originalDamage = 0;
+let logTimer = new Array();
 
 function loadStats() {
   // Get saved data
@@ -121,7 +122,7 @@ function damage() {
       + damageType + " damage";
   logList.appendChild(logItem);
   showLog();
-  setTimeout(hideLog, 10000);
+  logTimer.push(setTimeout(hideLog, 10000));
 }
 
 function blockDamage() {
@@ -232,7 +233,7 @@ function healHp() {
     logItem.textContent = "Healed " + hpChange + " HP";
     logList.appendChild(logItem);
     showLog();
-    setTimeout(hideLog, 10000);
+    logTimer.push(setTimeout(hideLog, 10000));
   }
 }
 
@@ -249,7 +250,7 @@ function healEp() {
     logItem.textContent = "Healed " + epChange + " EP";
     logList.appendChild(logItem);
     showLog();
-    setTimeout(hideLog, 10000);
+    logTimer.push(setTimeout(hideLog, 10000));
   }
 }
 
@@ -287,6 +288,9 @@ function toggleLog() {
 function hideLog() {
   document.getElementById("outputLog").hidden = true;
   document.getElementById("showLog").innerText = "Show Log";
+  for (let i = 0; i < logTimer.length; i++) {
+    clearTimeout(logTimer[i]);
+  }
 }
 
 function showLog() {
