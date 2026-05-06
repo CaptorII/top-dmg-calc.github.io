@@ -26,6 +26,8 @@ let resFlux = 0;
 let resChaos = 0;
 let resHoly = 0;
 let resUnholy = 0;
+let outputLog;
+let originalDamage = 0;
 
 function loadStats() {
   // Get saved data
@@ -99,18 +101,27 @@ function loadStats() {
   document.getElementById("resHoly").disabled = true;
   document.getElementById("resUnholy").value = resUnholy;
   document.getElementById("resUnholy").disabled = true;
+  document.getElementById("outputLog").hidden = true;
 }
 
 loadStats();
 
 function damage() {
   damageType = document.querySelector('input[name="damType"]:checked').value;
+  originalDamage = Number(document.getElementById("hpChange").value);
   if (damageType === "impact" || damageType === "fire" || damageType === "frost" || damageType === "storm" ||
       damageType === "acid" || damageType === "poison") {
-    blockDamage();
+    outputLog = blockDamage();
   } else {
-    wardDamage();
+    outputLog = wardDamage();
   }
+  let logList = document.getElementById("outputLog");
+  let logItem = document.createElement("li");
+  logItem.textContent = "Reduced " + outputLog[1] + " by " + outputLog[0] + " from " + originalDamage + " "
+      + damageType + " damage";
+  logList.appendChild(logItem);
+  showLog();
+  setTimeout(hideLog, 10000);
 }
 
 function blockDamage() {
@@ -147,19 +158,21 @@ function blockDamage() {
     if (hpChange <= indomitable) {
       indomitable -= hpChange;
       document.getElementById("indomitable").value = indomitable;
-      return;
+      return [hpChange, "indomitable"];
     }
     if (hpChange < tempHp) {
       tempHp -= hpChange;
       document.getElementById("tempHp").value = tempHp;
-      return;
+      return [hpChange, "tempHp"];
     }
     hpChange -= tempHp;
     tempHp = 0;
     document.getElementById("tempHp").value = tempHp;
     hp -= hpChange;
+    document.getElementById("hp").value = hp;
+    return [hpChange, "hp"];
   }
-  document.getElementById("hp").value = hp;
+  return [0, "hp"];
 }
 
 function wardDamage() {
@@ -189,42 +202,54 @@ function wardDamage() {
     if (epChange <= indomitable) {
       indomitable -= epChange;
       document.getElementById("indomitable").value = indomitable;
-      return;
+      return [epChange, "indomitable"];
     }
     if (epChange < tempEp) {
       tempEp -= epChange;
       document.getElementById("tempEp").value = tempEp;
-      return;
+      return [epChange, "tempEp"];
     }
     epChange -= tempEp;
     tempEp = 0;
     document.getElementById("tempEp").value = tempEp;
     ep -= epChange;
+    document.getElementById("ep").value = ep;
+    return [epChange, "ep"];
   }
-  document.getElementById("ep").value = ep;
+  return [0, "hp"];
 }
 
 function healHp() {
   hpChange = Number(document.getElementById("healAmount").value);
   if (hpChange > 0) {
-    if ((hp + hpChange) < maxHp) {
-      hp += hpChange;
-    } else {
-      hp = maxHp;
+    if ((hp + hpChange) > maxHp) {
+      hpChange = maxHp - hp;
     }
+    hp += hpChange;
     document.getElementById("hp").value = hp;
+    let logList = document.getElementById("outputLog");
+    let logItem = document.createElement("li");
+    logItem.textContent = "Healed " + hpChange + " HP";
+    logList.appendChild(logItem);
+    showLog();
+    setTimeout(hideLog, 10000);
   }
 }
 
 function healEp() {
   epChange = Number(document.getElementById("healAmount").value);
   if (epChange > 0) {
-    if ((ep + epChange) < maxEp) {
-      ep += epChange;
-    } else {
-      ep = maxEp;
+    if ((ep + epChange) > maxEp) {
+      epChange = maxEp - ep;
     }
+    ep += epChange;
     document.getElementById("ep").value = ep;
+    let logList = document.getElementById("outputLog");
+    let logItem = document.createElement("li");
+    logItem.textContent = "Healed " + epChange + " EP";
+    logList.appendChild(logItem);
+    showLog();
+    setTimeout(hideLog, 10000);
   }
 }
 
@@ -249,6 +274,26 @@ function popout() {
   for (let i = 0; i < popupElements.length; i++) {
     popupElements[i].hidden = !popupElements[i].hidden;
   }
+}
+
+function toggleLog() {
+  if (document.getElementById("outputLog").hidden) {
+    showLog();
+  } else {
+    hideLog();
+  }
+}
+
+function hideLog() {
+  document.getElementById("outputLog").hidden = true;
+  document.getElementById("showLog").innerText = "Show Log";
+}
+
+function showLog() {
+  document.getElementById("outputLog").hidden = false;
+  document.getElementById("showLog").innerText = "Hide Log";
+  let logItems = document.querySelectorAll("#outputLog li");
+  logItems[logItems.length - 1].scrollIntoView();
 }
 
 function changeStats() {
