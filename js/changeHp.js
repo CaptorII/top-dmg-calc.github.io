@@ -29,6 +29,9 @@ let resUnholy = 0;
 let outputLog;
 let originalDamage = 0;
 let logTimer = new Array();
+let braceAmount = 0;
+let braceBlock = 2;
+let braceWard = 2;
 
 function loadStats() {
   // Get saved data
@@ -57,6 +60,8 @@ function loadStats() {
   resChaos = Number(localStorage.getItem("resChaos"));
   resHoly = Number(localStorage.getItem("resHoly"));
   resUnholy = Number(localStorage.getItem("resUnholy"));
+  braceBlock = Number(localStorage.getItem("braceBlock"));
+  braceWard = Number(localStorage.getItem("braceWard"));
   document.getElementById("hp").value = hp;
   document.getElementById("hp").max = maxHp;
   document.getElementById("maxHp").value = maxHp;
@@ -134,6 +139,7 @@ function blockDamage() {
   hpChange = Number(document.getElementById("hpChange").value);
   damageType = document.querySelector('input[name="damType"]:checked').value;
   indomitable = Number(document.getElementById("indomitable").value);
+  braceAmount = Number(document.querySelectorAll('input[name="braceAmount"]:checked').length);
   if (hpChange > (block * 2)) {
     hpChange -= block;
   } else {
@@ -156,22 +162,27 @@ function blockDamage() {
     hpChange -= resPoison;
   }
   if (hpChange > 0) {
-    if (hpChange <= indomitable) {
-      indomitable -= hpChange;
-      document.getElementById("indomitable").value = indomitable;
-      return [hpChange, "indomitable"];
+    if (braceAmount > 0) {
+      hpChange -= braceBlock * braceAmount;
     }
-    if (hpChange < tempHp) {
-      tempHp -= hpChange;
+    if (hpChange > 0) {
+      if (hpChange <= indomitable) {
+        indomitable -= hpChange;
+        document.getElementById("indomitable").value = indomitable;
+        return [hpChange, "indomitable"];
+      }
+      if (hpChange < tempHp) {
+        tempHp -= hpChange;
+        document.getElementById("tempHp").value = tempHp;
+        return [hpChange, "tempHp"];
+      }
+      hpChange -= tempHp;
+      tempHp = 0;
       document.getElementById("tempHp").value = tempHp;
-      return [hpChange, "tempHp"];
+      hp -= hpChange;
+      document.getElementById("hp").value = hp;
+      return [hpChange, "hp"];
     }
-    hpChange -= tempHp;
-    tempHp = 0;
-    document.getElementById("tempHp").value = tempHp;
-    hp -= hpChange;
-    document.getElementById("hp").value = hp;
-    return [hpChange, "hp"];
   }
   return [0, "hp"];
 }
@@ -182,6 +193,7 @@ function wardDamage() {
   epChange = Number(document.getElementById("hpChange").value);
   damageType = document.querySelector('input[name="damType"]:checked').value;
   indomitable = Number(document.getElementById("indomitable").value);
+  braceAmount = Number(document.querySelectorAll('input[name="braceAmount"]:checked').length);
   if (epChange > (ward * 2)) {
     epChange = epChange - ward;
   } else {
@@ -200,24 +212,29 @@ function wardDamage() {
     epChange -= resUnholy;
   }
   if (epChange > 0) {
-    if (epChange <= indomitable) {
-      indomitable -= epChange;
-      document.getElementById("indomitable").value = indomitable;
-      return [epChange, "indomitable"];
+    if (braceAmount > 0) {
+      epChange -= braceWard * braceAmount;
     }
-    if (epChange < tempEp) {
-      tempEp -= epChange;
+    if (epChange > 0) {
+      if (epChange <= indomitable) {
+        indomitable -= epChange;
+        document.getElementById("indomitable").value = indomitable;
+        return [epChange, "indomitable"];
+      }
+      if (epChange < tempEp) {
+        tempEp -= epChange;
+        document.getElementById("tempEp").value = tempEp;
+        return [epChange, "tempEp"];
+      }
+      epChange -= tempEp;
+      tempEp = 0;
       document.getElementById("tempEp").value = tempEp;
-      return [epChange, "tempEp"];
+      ep -= epChange;
+      document.getElementById("ep").value = ep;
+      return [epChange, "ep"];
     }
-    epChange -= tempEp;
-    tempEp = 0;
-    document.getElementById("tempEp").value = tempEp;
-    ep -= epChange;
-    document.getElementById("ep").value = ep;
-    return [epChange, "ep"];
   }
-  return [0, "hp"];
+  return [0, "ep"];
 }
 
 function healHp() {
@@ -326,6 +343,8 @@ function changeStats() {
   localStorage.setItem("resChaos", resChaos);
   localStorage.setItem("resHoly", resHoly);
   localStorage.setItem("resUnholy", resUnholy);
+  localStorage.setItem("braceBlock", braceBlock);
+  localStorage.setItem("braceWard", braceWard);
 
   window.location.href="index.html";
 }

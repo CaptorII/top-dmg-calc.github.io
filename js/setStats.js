@@ -23,6 +23,8 @@ let resFlux = 0;
 let resChaos = 0;
 let resHoly = 0;
 let resUnholy = 0;
+let braceBlock = 2;
+let braceWard = 2;
 
 function updateMax() {
   hp = Number(document.getElementById("hp").value);
@@ -73,6 +75,8 @@ function submitStats() {
   resChaos = document.getElementById("resChaos").value;
   resHoly = document.getElementById("resHoly").value;
   resUnholy = document.getElementById("resUnholy").value;
+  braceBlock = document.getElementById("braceBlock").value;
+  braceWard = document.getElementById("braceWard").value;
   // Save data
   localStorage.setItem("hp", hp);
   localStorage.setItem("maxHp", maxHp);
@@ -99,6 +103,8 @@ function submitStats() {
   localStorage.setItem("resChaos", resChaos);
   localStorage.setItem("resHoly", resHoly);
   localStorage.setItem("resUnholy", resUnholy);
+  localStorage.setItem("braceBlock", braceBlock);
+  localStorage.setItem("braceWard", braceWard);
 
   window.location.href="hpchange.html";
 }
@@ -130,6 +136,8 @@ function loadStats() {
   resChaos = Number(localStorage.getItem("resChaos"));
   resHoly = Number(localStorage.getItem("resHoly"));
   resUnholy = Number(localStorage.getItem("resUnholy"));
+  braceBlock = Number(localStorage.getItem("braceBlock"));
+  braceWard = Number(localStorage.getItem("braceWard"));
 
   document.getElementById("hp").value = hp;
   document.getElementById("maxHp").value = maxHp;
@@ -155,6 +163,8 @@ function loadStats() {
   document.getElementById("resChaos").value = resChaos;
   document.getElementById("resHoly").value = resHoly;
   document.getElementById("resUnholy").value = resUnholy;
+  document.getElementById("braceBlock").value = braceBlock;
+  document.getElementById("braceWard").value = braceWard;
 }
 
 loadStats();
