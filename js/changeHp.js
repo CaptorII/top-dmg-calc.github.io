@@ -238,6 +238,7 @@ function wardDamage() {
 }
 
 function healHp() {
+  hp = Number(document.getElementById("hp").value);
   hpChange = Number(document.getElementById("healAmount").value);
   if (hpChange > 0) {
     if ((hp + hpChange) > maxHp) {
@@ -255,6 +256,7 @@ function healHp() {
 }
 
 function healEp() {
+  ep = Number(document.getElementById("ep").value);
   epChange = Number(document.getElementById("healAmount").value);
   if (epChange > 0) {
     if ((ep + epChange) > maxEp) {
