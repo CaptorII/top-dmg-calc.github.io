@@ -140,49 +140,49 @@ function blockDamage() {
   damageType = document.querySelector('input[name="damType"]:checked').value;
   indomitable = Number(document.getElementById("indomitable").value);
   braceAmount = Number(document.querySelectorAll('input[name="braceAmount"]:checked').length);
-  if (hpChange > (block * 2)) {
-    hpChange -= block;
-  } else {
-    hpChange = hpChange / 2;
-    if (hpChange % 1 !== 0) {
-      hpChange += 0.5;
+  if (!document.getElementById("unmitigated").checked) {
+    if (hpChange > (block * 2)) {
+      hpChange -= block;
+    } else {
+      hpChange = hpChange / 2;
+      if (hpChange % 1 !== 0) {
+        hpChange += 0.5;
+      }
     }
-  }
-  if (damageType === "impact") {
-    hpChange -= resImpact;
-  } else if (damageType === "fire") {
-    hpChange -= resFire;
-  } else if (damageType === "frost") {
-    hpChange -= resFrost;
-  } else if (damageType === "storm") {
-    hpChange -= resStorm;
-  } else if (damageType === "acid") {
-    hpChange -= resAcid;
-  } else if (damageType === "poison") {
-    hpChange -= resPoison;
-  }
-  if (hpChange > 0) {
-    if (braceAmount > 0) {
+    if (damageType === "impact") {
+      hpChange -= resImpact;
+    } else if (damageType === "fire") {
+      hpChange -= resFire;
+    } else if (damageType === "frost") {
+      hpChange -= resFrost;
+    } else if (damageType === "storm") {
+      hpChange -= resStorm;
+    } else if (damageType === "acid") {
+      hpChange -= resAcid;
+    } else if (damageType === "poison") {
+      hpChange -= resPoison;
+    }
+    if (hpChange > 0 && braceAmount > 0) {
       hpChange -= braceBlock * braceAmount;
     }
-    if (hpChange > 0) {
-      if (hpChange <= indomitable) {
-        indomitable -= hpChange;
-        document.getElementById("indomitable").value = indomitable;
-        return [hpChange, "indomitable"];
-      }
-      if (hpChange < tempHp) {
-        tempHp -= hpChange;
-        document.getElementById("tempHp").value = tempHp;
-        return [hpChange, "temp HP"];
-      }
-      hpChange -= tempHp;
-      tempHp = 0;
-      document.getElementById("tempHp").value = tempHp;
-      hp -= hpChange;
-      document.getElementById("hp").value = hp;
-      return [hpChange, "HP"];
+    if (hpChange > 0 && hpChange <= indomitable) {
+      indomitable -= hpChange;
+      document.getElementById("indomitable").value = indomitable;
+      return [hpChange, "indomitable"];
     }
+  }
+  if (hpChange > 0) {
+    if (hpChange < tempHp) {
+      tempHp -= hpChange;
+      document.getElementById("tempHp").value = tempHp;
+      return [hpChange, "temp HP"];
+    }
+    hpChange -= tempHp;
+    tempHp = 0;
+    document.getElementById("tempHp").value = tempHp;
+    hp -= hpChange;
+    document.getElementById("hp").value = hp;
+    return [hpChange, "HP"];
   }
   return [0, "HP"];
 }
@@ -194,45 +194,45 @@ function wardDamage() {
   damageType = document.querySelector('input[name="damType"]:checked').value;
   indomitable = Number(document.getElementById("indomitable").value);
   braceAmount = Number(document.querySelectorAll('input[name="braceAmount"]:checked').length);
-  if (epChange > (ward * 2)) {
-    epChange = epChange - ward;
-  } else {
-    epChange = epChange / 2;
-    if (epChange % 1 !== 0) {
-      epChange = epChange + 0.5;
+  if (!document.getElementById("unmitigated").checked) {
+    if (epChange > (ward * 2)) {
+      epChange = epChange - ward;
+    } else {
+      epChange = epChange / 2;
+      if (epChange % 1 !== 0) {
+        epChange = epChange + 0.5;
+      }
     }
-  }
-  if (damageType === "flux") {
-    epChange -= resFlux;
-  } else if (damageType === "chaos") {
-    epChange -= resChaos;
-  } else if (damageType === "holy") {
-    epChange -= resHoly;
-  } else if (damageType === "unholy") {
-    epChange -= resUnholy;
-  }
-  if (epChange > 0) {
-    if (braceAmount > 0) {
+    if (damageType === "flux") {
+      epChange -= resFlux;
+    } else if (damageType === "chaos") {
+      epChange -= resChaos;
+    } else if (damageType === "holy") {
+      epChange -= resHoly;
+    } else if (damageType === "unholy") {
+      epChange -= resUnholy;
+    }
+    if (epChange > 0 && braceAmount > 0) {
       epChange -= braceWard * braceAmount;
     }
-    if (epChange > 0) {
-      if (epChange <= indomitable) {
-        indomitable -= epChange;
-        document.getElementById("indomitable").value = indomitable;
-        return [epChange, "indomitable"];
-      }
-      if (epChange < tempEp) {
-        tempEp -= epChange;
-        document.getElementById("tempEp").value = tempEp;
-        return [epChange, "temp EP"];
-      }
-      epChange -= tempEp;
-      tempEp = 0;
-      document.getElementById("tempEp").value = tempEp;
-      ep -= epChange;
-      document.getElementById("ep").value = ep;
-      return [epChange, "EP"];
+    if (epChange > 0 && epChange <= indomitable) {
+      indomitable -= epChange;
+      document.getElementById("indomitable").value = indomitable;
+      return [epChange, "indomitable"];
     }
+  }
+  if (epChange > 0) {
+    if (epChange < tempEp) {
+      tempEp -= epChange;
+      document.getElementById("tempEp").value = tempEp;
+      return [epChange, "temp EP"];
+    }
+    epChange -= tempEp;
+    tempEp = 0;
+    document.getElementById("tempEp").value = tempEp;
+    ep -= epChange;
+    document.getElementById("ep").value = ep;
+    return [epChange, "EP"];
   }
   return [0, "EP"];
 }

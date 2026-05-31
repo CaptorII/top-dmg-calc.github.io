@@ -103,6 +103,10 @@
     </form>
   </p>
   <p>
+    <label for="unmitigated">Unmitigated: </label>
+    <input type="checkbox" id="unmitigated" name="unmitigated" value="true" />
+  </p>
+  <p>
     <button id="damage" onclick="damage()">Apply Damage</button>
   </p>
   <p>
@@ -115,13 +119,13 @@
     <button id="healFull" onclick="heal('full')">Heal to full</button>
   </p>
   <p>
-    <button id="showLog" onclick="toggleLog()">Show Log</button>
-  </p>
-  <p>
     <button id="undo" onclick="undo()">Undo Last Action</button>
   </p>
   <p>
     <button id="return" onclick="changeStats()">Return to previous page</button>
+  </p>
+  <p>
+    <button id="showLog" onclick="toggleLog()">Show Log</button>
   </p>
   <ul id="outputLog"></ul>
   <button id="popout" onclick="popout()"><</button>
