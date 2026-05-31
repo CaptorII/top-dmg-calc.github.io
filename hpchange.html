@@ -110,15 +110,18 @@
     <input type="number" id="healAmount" min="0" max="1000" value="0" />
   </p>
   <p>
-    <button id="healHp" onclick="healHp()">Heal HP</button>
-    <button id="healEp" onclick="healEp()">Heal EP</button>
-    <button id="heal" onclick="heal()">Heal to full</button>
-  </p>
-  <p>
-    <button id="return" onclick="changeStats()">Return to previous page</button>
+    <button id="healHp" onclick="heal('hp')">Heal HP</button>
+    <button id="healEp" onclick="heal('ep')">Heal EP</button>
+    <button id="healFull" onclick="heal('full')">Heal to full</button>
   </p>
   <p>
     <button id="showLog" onclick="toggleLog()">Show Log</button>
+  </p>
+  <p>
+    <button id="undo" onclick="undo()">Undo Last Action</button>
+  </p>
+  <p>
+    <button id="return" onclick="changeStats()">Return to previous page</button>
   </p>
   <ul id="outputLog"></ul>
   <button id="popout" onclick="popout()"><</button>

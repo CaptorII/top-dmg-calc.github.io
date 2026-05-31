@@ -174,17 +174,17 @@ function blockDamage() {
       if (hpChange < tempHp) {
         tempHp -= hpChange;
         document.getElementById("tempHp").value = tempHp;
-        return [hpChange, "tempHp"];
+        return [hpChange, "temp HP"];
       }
       hpChange -= tempHp;
       tempHp = 0;
       document.getElementById("tempHp").value = tempHp;
       hp -= hpChange;
       document.getElementById("hp").value = hp;
-      return [hpChange, "hp"];
+      return [hpChange, "HP"];
     }
   }
-  return [0, "hp"];
+  return [0, "HP"];
 }
 
 function wardDamage() {
@@ -224,17 +224,35 @@ function wardDamage() {
       if (epChange < tempEp) {
         tempEp -= epChange;
         document.getElementById("tempEp").value = tempEp;
-        return [epChange, "tempEp"];
+        return [epChange, "temp EP"];
       }
       epChange -= tempEp;
       tempEp = 0;
       document.getElementById("tempEp").value = tempEp;
       ep -= epChange;
       document.getElementById("ep").value = ep;
-      return [epChange, "ep"];
+      return [epChange, "EP"];
     }
   }
-  return [0, "ep"];
+  return [0, "EP"];
+}
+
+function heal(healType) {
+  let logList = document.getElementById("outputLog");
+  let logItem = document.createElement("li");
+  if (healType === "hp") {
+    outputLog = healHp();
+    logItem.textContent = "Healed " + outputLog[0] + " " + outputLog[1];
+  } else if (healType === "ep") {
+    outputLog = healEp();
+    logItem.textContent = "Healed " + outputLog[0] + " " + outputLog[1];
+  } else if (healType === "full") {
+    outputLog = healToFull();
+    logItem.textContent = "Healed HP/EP to full";
+  }
+  logList.appendChild(logItem);
+  showLog();
+  logTimer.push(setTimeout(hideLog, 10000));
 }
 
 function healHp() {
@@ -246,12 +264,7 @@ function healHp() {
     }
     hp += hpChange;
     document.getElementById("hp").value = hp;
-    let logList = document.getElementById("outputLog");
-    let logItem = document.createElement("li");
-    logItem.textContent = "Healed " + hpChange + " HP";
-    logList.appendChild(logItem);
-    showLog();
-    logTimer.push(setTimeout(hideLog, 10000));
+    return [hpChange, "HP", "heal"];
   }
 }
 
@@ -264,20 +277,18 @@ function healEp() {
     }
     ep += epChange;
     document.getElementById("ep").value = ep;
-    let logList = document.getElementById("outputLog");
-    let logItem = document.createElement("li");
-    logItem.textContent = "Healed " + epChange + " EP";
-    logList.appendChild(logItem);
-    showLog();
-    logTimer.push(setTimeout(hideLog, 10000));
+    return [epChange, "EP", "heal"];
   }
 }
 
-function heal() {
+function healToFull() {
+  hpChange = maxHp - hp;
   hp = maxHp;
   document.getElementById("hp").value = hp;
+  epChange = maxEp - ep;
   ep = maxEp;
   document.getElementById("ep").value = ep;
+  return [-1, "full", "heal"];
 }
 
 function updateIndomitable() {
@@ -317,6 +328,45 @@ function showLog() {
   document.getElementById("showLog").innerText = "Hide Log";
   let logItems = document.querySelectorAll("#outputLog li");
   logItems[logItems.length - 1].scrollIntoView();
+}
+
+function undo() {
+  let logList = document.getElementById("outputLog");
+  let logItem = document.createElement("li");
+  if (outputLog[0] === -1) {
+    hp -= hpChange;
+    ep -= epChange;
+    document.getElementById("hp").value = hp;
+    document.getElementById("ep").value = ep;
+    logItem.textContent = "Undid full heal: Removed " + hpChange + " HP and " + epChange + " EP";
+  } else if (outputLog[0] === 0) {
+    logItem.textContent = "Nothing to undo";
+  } else {
+    if (outputLog[2] === "heal") {
+      outputLog[0] = -outputLog[0];
+    }
+    if (outputLog[1] === "indomitable") {
+      indomitable += outputLog[0];
+    } else if (outputLog[1] === "temp HP") {
+      tempHp += outputLog[0];
+    } else if (outputLog[1] === "HP") {
+      hp += outputLog[0];
+    } else if (outputLog[1] === "temp EP") {
+      tempEp += outputLog[0];
+    } else if (outputLog[1] === "EP") {
+      ep += outputLog[0];
+    }
+    document.getElementById("indomitable").value = indomitable;
+    document.getElementById("tempHp").value = tempHp;
+    document.getElementById("hp").value = hp;
+    document.getElementById("tempEp").value = tempEp;
+    document.getElementById("ep").value = ep;
+    logItem.textContent = "Undid last action: " + outputLog[0] + " " + outputLog[1];
+  }
+  logList.appendChild(logItem);
+  showLog();
+  logTimer.push(setTimeout(hideLog, 10000));
+  outputLog = [0, "none", "none"];
 }
 
 function changeStats() {
