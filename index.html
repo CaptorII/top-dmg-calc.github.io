@@ -90,13 +90,29 @@
       <td><label for="resPoison">Poison Resistance:</label></td>
       <td><input type="number" id="resPoison" min="-100" max="100" value="0" /></td>
     </tr>
-    <tr>
-      <td><label for="braceBlock">Brace (Physical):</label></td>
-      <td><input type="number" id="braceBlock" min="2" max="5" value="2" /></td>
-      <td><label for="braceWard">Brace (Essence):</label></td>
-      <td><input type="number" id="braceWard" min="2" max="5" value="2" /></td>
-    </tr>
   </table>
+  <form id="physicalArmourBasics">
+    <p>
+      <label>Physical Armour Basics:</label>
+      <input type="radio" id="physicalBraceOne" name="physicalBrace" value="2" checked />
+      <label for="physicalBraceOne">0/1</label>
+      <input type="radio" id="physicalBraceTwo" name="physicalBrace" value="3" />
+      <label for="physicalBraceTwo">2</label>
+      <input type="radio" id="physicalBraceThree" name="physicalBrace" value="4" />
+      <label for="physicalBraceThree">3</label>
+    </p>
+  </form>
+  <form id="essenceArmourBasics">
+    <p>
+      <label>Essence Armour Basics:</label>
+      <input type="radio" id="essenceBraceOne" name="essenceBrace" value="2" checked />
+      <label for="essenceBraceOne">0/1</label>
+      <input type="radio" id="essenceBraceTwo" name="essenceBrace" value="3" />
+      <label for="essenceBraceTwo">2</label>
+      <input type="radio" id="essenceBraceThree" name="essenceBrace" value="4" />
+      <label for="essenceBraceThree">3</label>
+    </p>
+  </form>
   <p><button type="submit" onclick="submitStats()">Save</button></p>
 
   <script src="js/setStats.js"></script>

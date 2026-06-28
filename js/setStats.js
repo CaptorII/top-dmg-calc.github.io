@@ -75,8 +75,8 @@ function submitStats() {
   resChaos = document.getElementById("resChaos").value;
   resHoly = document.getElementById("resHoly").value;
   resUnholy = document.getElementById("resUnholy").value;
-  braceBlock = document.getElementById("braceBlock").value;
-  braceWard = document.getElementById("braceWard").value;
+  braceBlock = document.querySelector('input[name="physicalBrace"]:checked').value;
+  braceWard = document.querySelector('input[name="essenceBrace"]:checked').value;
   // Save data
   localStorage.setItem("hp", hp);
   localStorage.setItem("maxHp", maxHp);
@@ -163,8 +163,20 @@ function loadStats() {
   document.getElementById("resChaos").value = resChaos;
   document.getElementById("resHoly").value = resHoly;
   document.getElementById("resUnholy").value = resUnholy;
-  document.getElementById("braceBlock").value = braceBlock;
-  document.getElementById("braceWard").value = braceWard;
+  if (braceBlock === 2) {
+    document.getElementById("physicalBraceOne").checked = true;
+  } else if (braceBlock === 3) {
+    document.getElementById("physicalBraceTwo").checked = true;
+  } else {
+    document.getElementById("physicalBraceThree").checked = true;
+  }
+  if (braceWard === 2) {
+    document.getElementById("essenceBraceOne").checked = true;
+  } else if (braceWard === 3) {
+    document.getElementById("essenceBraceTwo").checked = true;
+  } else {
+    document.getElementById("essenceBraceThree").checked = true;
+  }
 }
 
 loadStats();
