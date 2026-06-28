@@ -9,155 +9,159 @@
 </head>
 
 <body>
+<p id="navigation">
+  <button id="setup" onclick="changeStats()">Setup</button>
+  <button id="calculator">Calculator</button>
+</p>
 
-  <h1>Damage Calculator</h1>
-  <img src="img/logo.png" alt="Logo" id="logo" />
+<h1>Damage Calculator</h1>
+<img src="img/logo.png" alt="Logo" id="logo" />
 
-  <div class="hpDiv">
-    <p>
-      <label for="hp" id="hpLabel" class="hpInfo">HP: </label>
-      <input type="number" id="hp" min="0" max="1000" value="10" class="hpInfo" />
-      <label for="maxHp" id="maxHpLabel" class="hpInfo"> / </label>
-      <input type="number" id="maxHp" min="0" max="1000" value="10" class="hpInfo" />
-      <label for="tempHp" id="tempHpLabel" class="hpInfo">Temp: </label>
-      <input type="number" id="tempHp" min="0" max="1000" value="0" class="hpInfo" />
-    </p>
-  </div>
-  <div class="hpDiv">
-    <p>
-      <label for="ep" id="epLabel" class="hpInfo">EP: </label>
-      <input type="number" id="ep" min="0" max="1000" value="10" class="hpInfo" />
-      <label for="maxEp" id="maxEpLabel" class="hpInfo"> / </label>
-      <input type="number" id="maxEp" min="0" max="1000" value="10" class="hpInfo" />
-      <label for="tempEp" id="tempEpLabel" class="hpInfo">Temp: </label>
-      <input type="number" id="tempEp" min="0" max="1000" value="0" class="hpInfo" />
-    </p>
-  </div>
-  <div class="hpDiv">
-    <p>
-      <label for="stamina" id="staminaLabel" class="hpInfo">Stamina: </label>
-      <input type="number" id="stamina" min="0" max="1000" value="0" class="hpInfo" />
-      <label for="maxStamina" id="maxStaminaLabel" class="hpInfo"> / </label>
-      <input type="number" id="maxStamina" min="0" max="1000" value="0" class="hpInfo" />
-      <label for="tempStamina" id="tempStaminaLabel" class="hpInfo">Temp: </label>
-      <input type="number" id="tempStamina" min="0" max="1000" value="0" class="hpInfo" />
-    </p>
-    <p>
-      <label for="mana" id="manaLabel" class="hpInfo">Mana: </label>
-      <input type="number" id="mana" min="0" max="1000" value="0" class="hpInfo" />
-      <label for="maxMana" id="maxManaLabel" class="hpInfo"> / </label>
-      <input type="number" id="maxMana" min="0" max="1000" value="0" class="hpInfo" />
-      <label for="tempMana" id="tempManaLabel" class="hpInfo">Temp: </label>
-      <input type="number" id="tempMana" min="0" max="1000" value="0" class="hpInfo" />
-    </p>
-  </div>
+<div class="hpDiv">
   <p>
-    <label for="indomitable" id="indomitableLabel">Indomitable: </label>
-    <input type="number" id="indomitable" min="0" max="1000" value="0" onchange="updateIndomitable()" />
+    <label for="hp" id="hpLabel" class="hpInfo">HP: </label>
+    <input type="number" id="hp" min="0" max="1000" value="10" class="hpInfo" />
+    <label for="maxHp" id="maxHpLabel" class="hpInfo"> / </label>
+    <input type="number" id="maxHp" min="0" max="1000" value="10" class="hpInfo" />
+    <label for="tempHp" id="tempHpLabel" class="hpInfo">Temp: </label>
+    <input type="number" id="tempHp" min="0" max="1000" value="0" class="hpInfo" />
+  </p>
+</div>
+<div class="hpDiv">
+  <p>
+    <label for="ep" id="epLabel" class="hpInfo">EP: </label>
+    <input type="number" id="ep" min="0" max="1000" value="10" class="hpInfo" />
+    <label for="maxEp" id="maxEpLabel" class="hpInfo"> / </label>
+    <input type="number" id="maxEp" min="0" max="1000" value="10" class="hpInfo" />
+    <label for="tempEp" id="tempEpLabel" class="hpInfo">Temp: </label>
+    <input type="number" id="tempEp" min="0" max="1000" value="0" class="hpInfo" />
+  </p>
+</div>
+<div class="hpDiv">
+  <p>
+    <label for="stamina" id="staminaLabel" class="hpInfo">Stamina: </label>
+    <input type="number" id="stamina" min="0" max="1000" value="0" class="hpInfo" />
+    <label for="maxStamina" id="maxStaminaLabel" class="hpInfo"> / </label>
+    <input type="number" id="maxStamina" min="0" max="1000" value="0" class="hpInfo" />
+    <label for="tempStamina" id="tempStaminaLabel" class="hpInfo">Temp: </label>
+    <input type="number" id="tempStamina" min="0" max="1000" value="0" class="hpInfo" />
   </p>
   <p>
-    <label for="hpChange">Damage:</label>
-    <input type="number" id="hpChange" min="0" max="1000" value="0" />
+    <label for="mana" id="manaLabel" class="hpInfo">Mana: </label>
+    <input type="number" id="mana" min="0" max="1000" value="0" class="hpInfo" />
+    <label for="maxMana" id="maxManaLabel" class="hpInfo"> / </label>
+    <input type="number" id="maxMana" min="0" max="1000" value="0" class="hpInfo" />
+    <label for="tempMana" id="tempManaLabel" class="hpInfo">Temp: </label>
+    <input type="number" id="tempMana" min="0" max="1000" value="0" class="hpInfo" />
   </p>
-  <form id="damageTypeForm">
-    <p>
-      <input type="radio" id="damImpact" name="damType" value="impact" checked />
-      <label for="damImpact">Impact</label>
-      <input type="radio" id="damFire" name="damType" value="fire" />
-      <label for="damFire">Fire</label>
-      <input type="radio" id="damFrost" name="damType" value="frost" />
-      <label for="damFrost">Frost</label>
-      <input type="radio" id="damStorm" name="damType" value="storm" />
-      <label for="damStorm">Storm</label>
-      <input type="radio" id="damAcid" name="damType" value="acid" />
-      <label for="damAcid">Acid</label>
-      <input type="radio" id="damPoison" name="damType" value="poison" />
-      <label for="damPoison">Poison</label>
-    </p>
-    <p>
-      <input type="radio" id="damFlux" name="damType" value="flux" />
-      <label for="damFlux">Flux</label>
-      <input type="radio" id="damChaos" name="damType" value="chaos" />
-      <label for="damChaos">Chaos</label>
-      <input type="radio" id="damHoly" name="damType" value="holy" />
-      <label for="damHoly">Holy</label>
-      <input type="radio" id="damUnholy" name="damType" value="unholy" />
-      <label for="damUnholy">Unholy</label>
-    </p>
+</div>
+<p>
+  <label for="indomitable" id="indomitableLabel">Indomitable: </label>
+  <input type="number" id="indomitable" min="0" max="1000" value="0" onchange="updateIndomitable()" />
+</p>
+<p>
+  <label for="hpChange">Damage:</label>
+  <input type="number" id="hpChange" min="0" max="1000" value="0" />
+</p>
+<form id="damageTypeForm">
+  <p>
+    <input type="radio" id="damImpact" name="damType" value="impact" checked />
+    <label for="damImpact">Impact</label>
+    <input type="radio" id="damFire" name="damType" value="fire" />
+    <label for="damFire">Fire</label>
+    <input type="radio" id="damFrost" name="damType" value="frost" />
+    <label for="damFrost">Frost</label>
+    <input type="radio" id="damStorm" name="damType" value="storm" />
+    <label for="damStorm">Storm</label>
+    <input type="radio" id="damAcid" name="damType" value="acid" />
+    <label for="damAcid">Acid</label>
+    <input type="radio" id="damPoison" name="damType" value="poison" />
+    <label for="damPoison">Poison</label>
+  </p>
+  <p>
+    <input type="radio" id="damFlux" name="damType" value="flux" />
+    <label for="damFlux">Flux</label>
+    <input type="radio" id="damChaos" name="damType" value="chaos" />
+    <label for="damChaos">Chaos</label>
+    <input type="radio" id="damHoly" name="damType" value="holy" />
+    <label for="damHoly">Holy</label>
+    <input type="radio" id="damUnholy" name="damType" value="unholy" />
+    <label for="damUnholy">Unholy</label>
+  </p>
+</form>
+<p>
+  <form id="braceForm">
+    <label id="braceLabel">Brace: </label>
+    <input type="checkbox" id="braceOne" name="braceAmount" value="1" />
+    <label for="braceOne">1 AP</label>
+    <input type="checkbox" id="braceTwo" name="braceAmount" value="2" />
+    <label for="braceTwo">1 AP</label>
+    <input type="checkbox" id="braceThree" name="braceAmount" value="3" />
+    <label for="braceThree">1 AP</label>
+    <input type="checkbox" id="braceFour" name="braceAmount" value="4" />
+    <label for="braceFour">1 AP</label>
+    <input type="checkbox" id="braceFive" name="braceAmount" value="5" />
+    <label for="braceFive">1 AP</label>
+    <input type="checkbox" id="braceSix" name="braceAmount" value="6" />
+    <label for="braceSix">1 AP</label>
   </form>
-  <p>
-    <form id="braceForm">
-      <label id="braceLabel">Brace: </label>
-      <input type="checkbox" id="braceOne" name="braceAmount" value="1" />
-      <label for="braceOne">1 AP</label>
-      <input type="checkbox" id="braceTwo" name="braceAmount" value="2" />
-      <label for="braceTwo">1 AP</label>
-      <input type="checkbox" id="braceThree" name="braceAmount" value="3" />
-      <label for="braceThree">1 AP</label>
-      <input type="checkbox" id="braceFour" name="braceAmount" value="4" />
-      <label for="braceFour">1 AP</label>
-      <input type="checkbox" id="braceFive" name="braceAmount" value="5" />
-      <label for="braceFive">1 AP</label>
-      <input type="checkbox" id="braceSix" name="braceAmount" value="6" />
-      <label for="braceSix">1 AP</label>
-    </form>
-  </p>
-  <p>
-    <label for="unmitigated">Unmitigated: </label>
-    <input type="checkbox" id="unmitigated" name="unmitigated" value="true" />
-  </p>
-  <p>
-    <button id="damage" onclick="damage()">Apply Damage</button>
-  </p>
-  <p>
-    <label for="healAmount" id="healLabel">Heal:</label>
-    <input type="number" id="healAmount" min="0" max="1000" value="0" />
-  </p>
-  <p>
-    <button id="healHp" onclick="heal('hp')">Heal HP</button>
-    <button id="healEp" onclick="heal('ep')">Heal EP</button>
-    <button id="healFull" onclick="heal('full')">Heal to full</button>
-  </p>
-  <p>
-    <button id="undo" onclick="undo()">Undo Last Action</button>
-  </p>
-  <p>
-    <button id="return" onclick="changeStats()">Return to previous page</button>
-  </p>
-  <p>
-    <button id="showLog" onclick="toggleLog()">Show Log</button>
-  </p>
-  <ul id="outputLog"></ul>
-  <button id="popout" onclick="popout()"><</button>
+</p>
+<p>
+  <label for="unmitigated">Unmitigated: </label>
+  <input type="checkbox" id="unmitigated" name="unmitigated" value="true" />
+</p>
+<p>
+  <button id="damage" onclick="damage()">Apply Damage</button>
+</p>
+<p>
+  <label for="healAmount" id="healLabel">Heal:</label>
+  <input type="number" id="healAmount" min="0" max="1000" value="0" />
+</p>
+<p>
+  <button id="healHp" onclick="heal('hp')">Heal HP</button>
+  <button id="healEp" onclick="heal('ep')">Heal EP</button>
+  <button id="healFull" onclick="heal('full')">Heal to full</button>
+</p>
+<p>
+  <button id="undo" onclick="undo()">Undo Last Action</button>
+</p>
+<p>
+  <button id="return" onclick="changeStats()">Return to previous page</button>
+</p>
+<p>
+  <button id="showLog" onclick="toggleLog()">Show Log</button>
+</p>
+<ul id="outputLog"></ul>
+<button id="popout" onclick="popout()"><</button>
 
-  <div id="resDiv" class="resistances" hidden="hidden">
-    <label for="block" id="blockLabel" class="resistances" hidden="hidden">Block:</label>
-    <input type="number" id="block" class="resistances" hidden="hidden" />
-    <label for="ward" id="wardLabel" class="resistances" hidden="hidden">Ward:</label>
-    <input type="number" id="ward" class="resistances" hidden="hidden" />
-    <label for="resImpact" id="resImpactLabel" class="resistances" hidden="hidden">Impact Resistance:</label>
-    <input type="number" id="resImpact" class="resistances" hidden="hidden" />
-    <label for="resFire" id="resFireLabel" class="resistances" hidden="hidden">Fire Resistance:</label>
-    <input type="number" id="resFire" class="resistances" hidden="hidden" />
-    <label for="resFrost" id="resFrostLabel" class="resistances" hidden="hidden">Frost Resistance:</label>
-    <input type="number" id="resFrost" class="resistances" hidden="hidden" />
-    <label for="resStorm" id="resStormLabel" class="resistances" hidden="hidden">Storm Resistance:</label>
-    <input type="number" id="resStorm" class="resistances" hidden="hidden" />
-    <label for="resAcid" id="resAcidLabel" class="resistances" hidden="hidden">Acid Resistance:</label>
-    <input type="number" id="resAcid" class="resistances" hidden="hidden" />
-    <label for="resPoison" id="resPoisonLabel" class="resistances" hidden="hidden">Poison Resistance:</label>
-    <input type="number" id="resPoison" class="resistances" hidden="hidden" />
-    <label for="resFlux" id="resFluxLabel" class="resistances" hidden="hidden">Flux Resistance:</label>
-    <input type="number" id="resFlux" class="resistances" hidden="hidden" />
-    <label for="resChaos" id="resChaosLabel" class="resistances" hidden="hidden">Chaos Resistance:</label>
-    <input type="number" id="resChaos" class="resistances" hidden="hidden" />
-    <label for="resHoly" id="resHolyLabel" class="resistances" hidden="hidden">Holy Resistance:</label>
-    <input type="number" id="resHoly" class="resistances" hidden="hidden" />
-    <label for="resUnholy" id="resUnholyLabel" class="resistances" hidden="hidden">Unholy Resistance:</label>
-    <input type="number" id="resUnholy" class="resistances" hidden="hidden" />
-  </div>
+<div id="resDiv" class="resistances" hidden="hidden">
+  <label for="block" id="blockLabel" class="resistances" hidden="hidden">Block:</label>
+  <input type="number" id="block" class="resistances" hidden="hidden" />
+  <label for="ward" id="wardLabel" class="resistances" hidden="hidden">Ward:</label>
+  <input type="number" id="ward" class="resistances" hidden="hidden" />
+  <label for="resImpact" id="resImpactLabel" class="resistances" hidden="hidden">Impact Resistance:</label>
+  <input type="number" id="resImpact" class="resistances" hidden="hidden" />
+  <label for="resFire" id="resFireLabel" class="resistances" hidden="hidden">Fire Resistance:</label>
+  <input type="number" id="resFire" class="resistances" hidden="hidden" />
+  <label for="resFrost" id="resFrostLabel" class="resistances" hidden="hidden">Frost Resistance:</label>
+  <input type="number" id="resFrost" class="resistances" hidden="hidden" />
+  <label for="resStorm" id="resStormLabel" class="resistances" hidden="hidden">Storm Resistance:</label>
+  <input type="number" id="resStorm" class="resistances" hidden="hidden" />
+  <label for="resAcid" id="resAcidLabel" class="resistances" hidden="hidden">Acid Resistance:</label>
+  <input type="number" id="resAcid" class="resistances" hidden="hidden" />
+  <label for="resPoison" id="resPoisonLabel" class="resistances" hidden="hidden">Poison Resistance:</label>
+  <input type="number" id="resPoison" class="resistances" hidden="hidden" />
+  <label for="resFlux" id="resFluxLabel" class="resistances" hidden="hidden">Flux Resistance:</label>
+  <input type="number" id="resFlux" class="resistances" hidden="hidden" />
+  <label for="resChaos" id="resChaosLabel" class="resistances" hidden="hidden">Chaos Resistance:</label>
+  <input type="number" id="resChaos" class="resistances" hidden="hidden" />
+  <label for="resHoly" id="resHolyLabel" class="resistances" hidden="hidden">Holy Resistance:</label>
+  <input type="number" id="resHoly" class="resistances" hidden="hidden" />
+  <label for="resUnholy" id="resUnholyLabel" class="resistances" hidden="hidden">Unholy Resistance:</label>
+  <input type="number" id="resUnholy" class="resistances" hidden="hidden" />
+</div>
 
-  <script src="js/changeHp.js"></script>
+<script src="js/changeHp.js"></script>
 
 </body>
 

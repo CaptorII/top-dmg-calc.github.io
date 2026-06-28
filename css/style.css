@@ -92,6 +92,7 @@ body {
 h1 {
   color: #6021a5;
   font-size: 200%;
+  z-index: 2;
 }
 
 #logo {
@@ -103,6 +104,22 @@ h1 {
 
 button {
   background-color: #EBE1F7;
+}
+
+#navigation button {
+  width: 20%;
+  height: 4ch;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+#setup {
+  left: 0;
+}
+
+#calculator {
+  left: 20%;
 }
 
 input[type="radio"] {

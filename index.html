@@ -9,11 +9,14 @@
 </head>
 
 <body>
+<p id="navigation">
+  <button id="setup">Setup</button>
+  <button id="calculator" onclick="submitStats()">Calculator</button>
+</p>
+<h1>Damage Calculator</h1>
+<img src="img/logo.png" alt="Logo" id="logo" />
 
-  <h1>Damage Calculator</h1>
-  <img src="img/logo.png" alt="Logo" id="logo" />
-
-  <div class="hpDiv">
+<div class="hpDiv">
   <p>
     <label for="hp" id="hpLabel" class="hpInfo">HP: </label>
     <input type="number" id="hp" min="0" max="1000" value="10" class="hpInfo" onchange="updateMax()" />
@@ -22,100 +25,100 @@
     <label for="tempHp" id="tempHpLabel" class="hpInfo">Temp: </label>
     <input type="number" id="tempHp" min="0" max="1000" value="0" class="hpInfo" />
   </p>
-  </div>
+</div>
+<div class="hpDiv">
   <p>
-  <div class="hpDiv">
     <label for="ep" id="epLabel" class="hpInfo">EP: </label>
     <input type="number" id="ep" min="0" max="1000" value="10" class="hpInfo" onchange="updateMax()" />
     <label for="maxEp" id="maxEpLabel" class="hpInfo"> / </label>
     <input type="number" id="maxEp" min="0" max="1000" value="10" class="hpInfo" />
     <label for="tempEp" id="tempEpLabel" class="hpInfo">Temp: </label>
     <input type="number" id="tempEp" min="0" max="1000" value="0" class="hpInfo" />
-  </div>
   </p>
-  <div class="hpDiv">
-    <p>
-      <label for="stamina" id="staminaLabel" class="hpInfo">Stamina: </label>
-      <input type="number" id="stamina" min="0" max="1000" value="0" class="hpInfo" onchange="updateMax()" />
-      <label for="maxStamina" id="maxStaminaLabel" class="hpInfo"> / </label>
-      <input type="number" id="maxStamina" min="0" max="1000" value="0" class="hpInfo" />
-      <label for="tempStamina" id="tempStaminaLabel" class="hpInfo">Temp: </label>
-      <input type="number" id="tempStamina" min="0" max="1000" value="0" class="hpInfo" />
-    </p>
-    <p>
-      <label for="mana" id="manaLabel" class="hpInfo">Mana: </label>
-      <input type="number" id="mana" min="0" max="1000" value="0" class="hpInfo" onchange="updateMax()" />
-      <label for="maxMana" id="maxManaLabel" class="hpInfo"> / </label>
-      <input type="number" id="maxMana" min="0" max="1000" value="0" class="hpInfo" />
-      <label for="tempMana" id="tempManaLabel" class="hpInfo">Temp: </label>
-      <input type="number" id="tempMana" min="0" max="1000" value="0" class="hpInfo" />
-    </p>
-  </div>
-  <table id="hpTable">
-    <tr>
-      <td><label for="blockRange">Block:</label></td>
-      <td><input type="number" id="blockRange" min="0" max="100" value="0" /></td>
-      <td><label for="wardRange">Ward:</label></td>
-      <td><input type="number" id="wardRange" min="0" max="100" value="0" /></td>
-    </tr>
-    <tr>
-      <td><label for="resImpact">Impact Resistance:</label></td>
-      <td><input type="number" id="resImpact" min="-100" max="100" value="0" /></td>
-      <td><label for="resFlux">Flux Resistance:</label></td>
-      <td><input type="number" id="resFlux" min="-100" max="100" value="0" /></td>
-    </tr>
-    <tr>
-      <td><label for="resFire">Fire Resistance:</label></td>
-      <td><input type="number" id="resFire" min="-100" max="100" value="0" /></td>
-      <td><label for="resChaos">Chaos Resistance:</label></td>
-      <td><input type="number" id="resChaos" min="-100" max="100" value="0" /></td>
-    </tr>
-    <tr>
-      <td><label for="resFrost">Frost Resistance:</label></td>
-      <td><input type="number" id="resFrost" min="-100" max="100" value="0" /></td>
-      <td><label for="resHoly">Holy Resistance:</label></td>
-      <td><input type="number" id="resHoly" min="-100" max="100" value="0" /></td>
-    </tr>
-    <tr>
-      <td><label for="resStorm">Storm Resistance:</label></td>
-      <td><input type="number" id="resStorm" min="-100" max="100" value="0" /></td>
-      <td><label for="resUnholy">Unholy Resistance:</label></td>
-      <td><input type="number" id="resUnholy" min="-100" max="100" value="0" /></td>
-    </tr>
-    <tr>
-      <td><label for="resAcid">Acid Resistance:</label></td>
-      <td><input type="number" id="resAcid" min="-100" max="100" value="0" /></td>
-    </tr>
-    <tr>
-      <td><label for="resPoison">Poison Resistance:</label></td>
-      <td><input type="number" id="resPoison" min="-100" max="100" value="0" /></td>
-    </tr>
-  </table>
-  <form id="physicalArmourBasics">
-    <p>
-      <label>Physical Armour Basics:</label>
-      <input type="radio" id="physicalBraceOne" name="physicalBrace" value="2" checked />
-      <label for="physicalBraceOne">0/1</label>
-      <input type="radio" id="physicalBraceTwo" name="physicalBrace" value="3" />
-      <label for="physicalBraceTwo">2</label>
-      <input type="radio" id="physicalBraceThree" name="physicalBrace" value="4" />
-      <label for="physicalBraceThree">3</label>
-    </p>
-  </form>
-  <form id="essenceArmourBasics">
-    <p>
-      <label>Essence Armour Basics:</label>
-      <input type="radio" id="essenceBraceOne" name="essenceBrace" value="2" checked />
-      <label for="essenceBraceOne">0/1</label>
-      <input type="radio" id="essenceBraceTwo" name="essenceBrace" value="3" />
-      <label for="essenceBraceTwo">2</label>
-      <input type="radio" id="essenceBraceThree" name="essenceBrace" value="4" />
-      <label for="essenceBraceThree">3</label>
-    </p>
-  </form>
-  <p><button type="submit" onclick="submitStats()">Save</button></p>
+</div>
+<div class="hpDiv">
+  <p>
+    <label for="stamina" id="staminaLabel" class="hpInfo">Stamina: </label>
+    <input type="number" id="stamina" min="0" max="1000" value="0" class="hpInfo" onchange="updateMax()" />
+    <label for="maxStamina" id="maxStaminaLabel" class="hpInfo"> / </label>
+    <input type="number" id="maxStamina" min="0" max="1000" value="0" class="hpInfo" />
+    <label for="tempStamina" id="tempStaminaLabel" class="hpInfo">Temp: </label>
+    <input type="number" id="tempStamina" min="0" max="1000" value="0" class="hpInfo" />
+  </p>
+  <p>
+    <label for="mana" id="manaLabel" class="hpInfo">Mana: </label>
+    <input type="number" id="mana" min="0" max="1000" value="0" class="hpInfo" onchange="updateMax()" />
+    <label for="maxMana" id="maxManaLabel" class="hpInfo"> / </label>
+    <input type="number" id="maxMana" min="0" max="1000" value="0" class="hpInfo" />
+    <label for="tempMana" id="tempManaLabel" class="hpInfo">Temp: </label>
+    <input type="number" id="tempMana" min="0" max="1000" value="0" class="hpInfo" />
+  </p>
+</div>
+<table id="hpTable">
+  <tr>
+    <td><label for="blockRange">Block:</label></td>
+    <td><input type="number" id="blockRange" min="0" max="100" value="0" /></td>
+    <td><label for="wardRange">Ward:</label></td>
+    <td><input type="number" id="wardRange" min="0" max="100" value="0" /></td>
+  </tr>
+  <tr>
+    <td><label for="resImpact">Impact Resistance:</label></td>
+    <td><input type="number" id="resImpact" min="-100" max="100" value="0" /></td>
+    <td><label for="resFlux">Flux Resistance:</label></td>
+    <td><input type="number" id="resFlux" min="-100" max="100" value="0" /></td>
+  </tr>
+  <tr>
+    <td><label for="resFire">Fire Resistance:</label></td>
+    <td><input type="number" id="resFire" min="-100" max="100" value="0" /></td>
+    <td><label for="resChaos">Chaos Resistance:</label></td>
+    <td><input type="number" id="resChaos" min="-100" max="100" value="0" /></td>
+  </tr>
+  <tr>
+    <td><label for="resFrost">Frost Resistance:</label></td>
+    <td><input type="number" id="resFrost" min="-100" max="100" value="0" /></td>
+    <td><label for="resHoly">Holy Resistance:</label></td>
+    <td><input type="number" id="resHoly" min="-100" max="100" value="0" /></td>
+  </tr>
+  <tr>
+    <td><label for="resStorm">Storm Resistance:</label></td>
+    <td><input type="number" id="resStorm" min="-100" max="100" value="0" /></td>
+    <td><label for="resUnholy">Unholy Resistance:</label></td>
+    <td><input type="number" id="resUnholy" min="-100" max="100" value="0" /></td>
+  </tr>
+  <tr>
+    <td><label for="resAcid">Acid Resistance:</label></td>
+    <td><input type="number" id="resAcid" min="-100" max="100" value="0" /></td>
+  </tr>
+  <tr>
+    <td><label for="resPoison">Poison Resistance:</label></td>
+    <td><input type="number" id="resPoison" min="-100" max="100" value="0" /></td>
+  </tr>
+</table>
+<form id="physicalArmourBasics">
+  <p>
+    <label>Physical Armour Basics:</label>
+    <input type="radio" id="physicalBraceOne" name="physicalBrace" value="2" checked />
+    <label for="physicalBraceOne">0/1</label>
+    <input type="radio" id="physicalBraceTwo" name="physicalBrace" value="3" />
+    <label for="physicalBraceTwo">2</label>
+    <input type="radio" id="physicalBraceThree" name="physicalBrace" value="4" />
+    <label for="physicalBraceThree">3</label>
+  </p>
+</form>
+<form id="essenceArmourBasics">
+  <p>
+    <label>Essence Armour Basics:</label>
+    <input type="radio" id="essenceBraceOne" name="essenceBrace" value="2" checked />
+    <label for="essenceBraceOne">0/1</label>
+    <input type="radio" id="essenceBraceTwo" name="essenceBrace" value="3" />
+    <label for="essenceBraceTwo">2</label>
+    <input type="radio" id="essenceBraceThree" name="essenceBrace" value="4" />
+    <label for="essenceBraceThree">3</label>
+  </p>
+</form>
+<p><button type="submit" onclick="submitStats()">Save</button></p>
 
-  <script src="js/setStats.js"></script>
+<script src="js/setStats.js"></script>
 
 </body>
 
