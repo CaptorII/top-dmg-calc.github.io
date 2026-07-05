@@ -122,6 +122,10 @@ button {
   left: 20%;
 }
 
+#swap {
+  left: 40%;
+}
+
 input[type="radio"] {
   accent-color: #6021a5;
 }
@@ -202,6 +206,10 @@ input[type="radio"] {
   left: 50%;
   transform: translateX(-50%);
   z-index: 100;
+}
+
+.saveName {
+  width: 90%;
 }
 
 /* ==========================================================================

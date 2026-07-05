@@ -11,7 +11,8 @@
 <body>
 <p id="navigation">
   <button id="setup">Setup</button>
-  <button id="calculator" onclick="submitStats()">Calculator</button>
+  <button id="calculator">Calculator</button>
+  <button id="swap">Swap Save</button>
 </p>
 <h1>Damage Calculator</h1>
 <img src="img/logo.png" alt="Logo" id="logo" />
@@ -19,7 +20,7 @@
 <div class="hpDiv">
   <p>
     <label for="hp" id="hpLabel" class="hpInfo">HP: </label>
-    <input type="number" id="hp" min="0" max="1000" value="10" class="hpInfo" onchange="updateMax()" />
+    <input type="number" id="hp" min="0" max="1000" value="10" class="hpInfo" />
     <label for="maxHp" id="maxHpLabel" class="hpInfo"> / </label>
     <input type="number" id="maxHp" min="0" max="1000" value="10" class="hpInfo" />
     <label for="tempHp" id="tempHpLabel" class="hpInfo">Temp: </label>
@@ -29,7 +30,7 @@
 <div class="hpDiv">
   <p>
     <label for="ep" id="epLabel" class="hpInfo">EP: </label>
-    <input type="number" id="ep" min="0" max="1000" value="10" class="hpInfo" onchange="updateMax()" />
+    <input type="number" id="ep" min="0" max="1000" value="10" class="hpInfo" />
     <label for="maxEp" id="maxEpLabel" class="hpInfo"> / </label>
     <input type="number" id="maxEp" min="0" max="1000" value="10" class="hpInfo" />
     <label for="tempEp" id="tempEpLabel" class="hpInfo">Temp: </label>
@@ -39,7 +40,7 @@
 <div class="hpDiv">
   <p>
     <label for="stamina" id="staminaLabel" class="hpInfo">Stamina: </label>
-    <input type="number" id="stamina" min="0" max="1000" value="0" class="hpInfo" onchange="updateMax()" />
+    <input type="number" id="stamina" min="0" max="1000" value="0" class="hpInfo" />
     <label for="maxStamina" id="maxStaminaLabel" class="hpInfo"> / </label>
     <input type="number" id="maxStamina" min="0" max="1000" value="0" class="hpInfo" />
     <label for="tempStamina" id="tempStaminaLabel" class="hpInfo">Temp: </label>
@@ -47,7 +48,7 @@
   </p>
   <p>
     <label for="mana" id="manaLabel" class="hpInfo">Mana: </label>
-    <input type="number" id="mana" min="0" max="1000" value="0" class="hpInfo" onchange="updateMax()" />
+    <input type="number" id="mana" min="0" max="1000" value="0" class="hpInfo" />
     <label for="maxMana" id="maxManaLabel" class="hpInfo"> / </label>
     <input type="number" id="maxMana" min="0" max="1000" value="0" class="hpInfo" />
     <label for="tempMana" id="tempManaLabel" class="hpInfo">Temp: </label>
@@ -116,9 +117,9 @@
     <label for="essenceBraceThree">3</label>
   </p>
 </form>
-<p><button type="submit" onclick="submitStats()">Save</button></p>
+<p><button id="submit" type="submit">Save</button></p>
 
-<script src="js/setStats.js"></script>
+<script src="js/setStats.js" type="module"></script>
 
 </body>
 
