@@ -97,12 +97,14 @@ function blockDamage() {
   stats.indomitable = Number(document.getElementById("indomitable").value);
   braceAmount = Number(document.querySelectorAll('input[name="braceAmount"]:checked').length);
   if (!document.getElementById("unmitigated").checked) {
-    if (hpChange > (stats.block * 2)) {
-      hpChange -= stats.block;
-    } else {
-      hpChange = hpChange / 2;
-      if (hpChange % 1 !== 0) {
-        hpChange += 0.5;
+    if (!document.getElementById("piercing").checked) {
+      if (hpChange > (stats.block * 2)) {
+        hpChange -= stats.block;
+      } else {
+        hpChange = hpChange / 2;
+        if (hpChange % 1 !== 0) {
+          hpChange += 0.5;
+        }
       }
     }
     if (damageType === "impact") {
@@ -151,12 +153,14 @@ function wardDamage() {
   stats.indomitable = Number(document.getElementById("indomitable").value);
   braceAmount = Number(document.querySelectorAll('input[name="braceAmount"]:checked').length);
   if (!document.getElementById("unmitigated").checked) {
-    if (epChange > (stats.ward * 2)) {
-      epChange = epChange - stats.ward;
-    } else {
-      epChange = epChange / 2;
-      if (epChange % 1 !== 0) {
-        epChange = epChange + 0.5;
+    if (!document.getElementById("piercing").checked) {
+      if (epChange > (stats.ward * 2)) {
+        epChange = epChange - stats.ward;
+      } else {
+        epChange = epChange / 2;
+        if (epChange % 1 !== 0) {
+          epChange = epChange + 0.5;
+        }
       }
     }
     if (damageType === "flux") {
